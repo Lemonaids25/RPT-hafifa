@@ -69,14 +69,14 @@ function DegreeInput({ onSend, onReset }) {
       }}
     >
       <label>
-        Incremental Rotation (degrees):&nbsp;
         <input
           type="text"
           value={inputValue}
           onChange={e => setInputValue(e.target.value)}
-          style={{ width: 60 }}
+          style={{ width: 125, color: '#222' }}
           inputMode="numeric"
           pattern="[0-9]*"
+          placeholder='Incremental Rotation'
         />
       </label>
       <button
