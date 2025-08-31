@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import degreePng from '../assets/360-degrees.png';
 import NorthArrowPng from '../assets/north-arrow.png';
+import { INPUT_BOX_BASE_TOP, INPUT_BOX_LEFT_PERC} from '../constants';
 
 export function ProtractorImage({ rotation }) {
   return (
@@ -13,9 +14,9 @@ export function ProtractorImage({ rotation }) {
         src={degreePng}
         alt="360 degree markings"
         style={{
-          width: '300px',
+          width: '350px',
           height: 'auto',
-          marginTop: '100px',
+          marginTop: '95px',
           transform: `rotate(${rotation}deg)`,
           transition: 'transform 0.3s'
         }}
@@ -59,8 +60,8 @@ function DegreeInput({ onSend, onReset }) {
     <div
       style={{
         position: 'absolute',
-        top: 40,
-        left: '50%',
+        top: INPUT_BOX_BASE_TOP,
+        left: `${INPUT_BOX_LEFT_PERC}%`,
         transform: 'translateX(-50%)',
         zIndex: 10,
         pointerEvents: 'auto',
@@ -73,17 +74,17 @@ function DegreeInput({ onSend, onReset }) {
           type="text"
           value={inputValue}
           onChange={e => setInputValue(e.target.value)}
-          style={{ width: 125, color: '#222' }}
+          style={{ width: 'auto ', color: '#222' }}
           inputMode="numeric"
           pattern="[0-9]*"
-          placeholder='Incremental Rotation'
+          placeholder='commander sight Rotation'
         />
       </label>
       <button
         style={{ marginLeft: 8, height: 28 }}
         onClick={handleSend}
       >
-        Send
+        Set
       </button>
        <button
         style={{ marginLeft: 8, height: 28 }}
@@ -97,8 +98,8 @@ function DegreeInput({ onSend, onReset }) {
 export default function Compass() {
   const [degree, setDegree] = useState(0);
 
-  const handleIncrement = (increment) => {
-    setDegree(prev => prev + increment);
+  const handleIncrement = (rotation) => {
+    setDegree(rotation);
   };
   
    const handleReset = () => {

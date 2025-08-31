@@ -1,34 +1,36 @@
 import React, { useState } from 'react';
-import tankHullPng from '../assets/tank-hull.png';
+import tankTurretPng from '../assets/tank-turret.png';
 import { INPUT_BOX_LEFT_PERC, INPUT_BOX_BASE_TOP, INPUT_BOX_SPACING, TANK_COMPONENT_WIDTH, TANK_COMPONENT_TOP } from '../constants';
-import IncrementalRotationBox from './RotationBox';
+import IncrementalRotationBox from './RotationBox.js';
 
-function TankHull({ degree, setDegree }) {
+function TankTurret({degree, setDegree}) {
 
-  const handleSend = (rotation) => setDegree(rotation);
-  const handleReset = () => setDegree(0);
+    const handleSend = (rotation) => setDegree(rotation);
+    const handleReset = () => setDegree(0);
 
   return (
     <>
       <div
-        style={{    
+        style={{
           position: 'absolute',
-          top: INPUT_BOX_BASE_TOP + INPUT_BOX_SPACING,
+          top: INPUT_BOX_BASE_TOP + INPUT_BOX_SPACING * 2,
           left: `${INPUT_BOX_LEFT_PERC}%`,
           transform: 'translateX(-50%)',
           zIndex: 10,
-          pointerEvents: 'auto'
+          pointerEvents: 'auto',
+          display: 'flex',
+          alignItems: 'center'
         }}
       >
-        <IncrementalRotationBox
+       <IncrementalRotationBox
           onSend={handleSend}
           onReset={handleReset}
-          placeholder="Hull Rotation"
+          placeholder="Turret Rotation"
         />
       </div>
       <img
-        src={tankHullPng}
-        alt="Tank Hull"
+        src={tankTurretPng}
+        alt="Tank Turret"
         style={{
           position: 'absolute',
           left: '50%',
@@ -46,4 +48,4 @@ function TankHull({ degree, setDegree }) {
   );
 }
 
-export default TankHull;
+export default TankTurret;
