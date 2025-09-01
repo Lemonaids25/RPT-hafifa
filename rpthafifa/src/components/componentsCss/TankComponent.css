@@ -1,8 +1,12 @@
+:root {
+  --tank-component-top: 100px;
+  --tank-component-width: min(120vw, 500px);
+}
 .tank-component-img {
   position: absolute;
   left: 50%;
-  top: 180px; /* Adjust as needed or override with a className */
-  width: min(20vw, 80px);
+  top: var(--tank-component-top);
+  width: var(--tank-component-width);
   height: auto;
   z-index: 3;
   pointer-events: none;

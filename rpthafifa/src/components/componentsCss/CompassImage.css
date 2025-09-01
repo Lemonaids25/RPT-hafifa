@@ -1,0 +1,11 @@
+.compass-img {
+  position: absolute;
+  left: 50%;
+  top: 180px; /* Or use your TANK_COMPONENT_TOP value */
+  transform: translateX(-50%);
+  width: min(40vw, 320px);
+  height: auto;
+  z-index: 1;
+  pointer-events: none;
+  user-select: none;
+}

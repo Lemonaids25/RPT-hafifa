@@ -1,7 +1,7 @@
 import React from 'react';
 import './componentsCss/TankComponent.css';
 
-export default function TankComponent({ src, degree, alt = "Tank Component", className = "" }) {
+export default function TankComponent({ src, degree, alt = "Tank Component", className = "", style = {} }) {
   return (
     <img
       src={src}
@@ -9,6 +9,7 @@ export default function TankComponent({ src, degree, alt = "Tank Component", cla
       className={`tank-component-img ${className}`}
       style={{
         transform: `translateX(-50%) rotate(${degree}deg)`,
+        ...style
       }}
       draggable={false}
     />
