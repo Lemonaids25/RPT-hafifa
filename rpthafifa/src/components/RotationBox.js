@@ -1,49 +1,33 @@
 import React, { useState } from 'react';
+import './componentsCss/RotationBox.css';
 
-export default function RotationBox({ 
-  onSend, 
-  onReset, 
-  placeholder = 'Rotation', 
-  style = {} 
-}) {
+export default function RotationBox({ onSet, onReset, placeholder = 'Rotation', style = {} }) {
   const [inputValue, setInputValue] = useState('');
 
-  const handleSend = () => {
+  const handleSet = () => {
     const val = String(inputValue).replace(/[^0-9.-]/g, '');
-    const increment = val === '' || val === '-' || val === '.' ? 0 : Number(val);
-    onSend(increment);
+    const rotation = val === '' || val === '-' || val === '.' ? 0 : Number(val);
+    onSet(rotation);
     setInputValue('');
   };
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-        ...style
-      }}
-    >
+    <div className="rotation-box-container" style={style}>
       <input
         type="text"
         value={inputValue}
         onChange={e => setInputValue(e.target.value)}
-        style={{ width: 'auto', color: '#222' }}
+        className="rotation-box-input"
         inputMode="numeric"
         pattern="[0-9]*"
         placeholder={placeholder}
       />
-      <button
-        style={{ marginLeft: 8, height: 28 }}
-        onClick={handleSend}
-      >
+      <button className="rotation-box-button" onClick={handleSet}>
         Set
       </button>
-      <button
-        style={{ marginLeft: 8, height: 28 }}
-        onClick={onReset}
-      >
+      <button className="rotation-box-button" onClick={onReset}>
         Reset
       </button>
-    </div>
+      </div>
   );
 }

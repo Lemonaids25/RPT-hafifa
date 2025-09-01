@@ -1,34 +1,44 @@
-import React, {useState} from 'react';
-import Compass from './components/compass';
-import TankHull from './components/tankHull';
-import TankTurret from './components/tankTurret';
-import DegreeDisplay from './components/DegreeDisplay';
-
+import React from 'react';
+import TankComponent from './components/TankComponent';
+import RotationBox from './components/RotationBox';
+import TankManager from './Managers/TankManager';
+import tankHullPng from './assets/tank-hull.png';
+import tankTurretPng from './assets/tank-turret.png';
 
 function App() {
-  const [compassDegree, setCompassDegree] = useState(0);
-  const [hullDegree, setHullDegree] = useState(0);
-  const [turretDegree, setTurretDegree] = useState(0);
-
-    return (
+  return (
     <div>
-      <DegreeDisplay
-        values={[
-          { label: 'Compass', value: compassDegree },
-          { label: 'Hull', value: hullDegree },
-          { label: 'Turret', value: turretDegree }
-        ]}
-        position={{
-          position: 'fixed',
-          top: 10,
-          left: '50%',
-          transform: 'translateX(-50%)'
-        }}
-      />
-      <Compass degree={compassDegree} setDegree={setCompassDegree} />
-      <TankHull degree={hullDegree} setDegree={setHullDegree} />
-      <TankTurret degree={turretDegree} setDegree={setTurretDegree} />
+      {/* Hull */}
+      <TankManager>
+        {({ degree, handleSet, handleReset }) => (
+          <>
+            <RotationBox
+              onSet={handleSet}
+              onReset={handleReset}
+              placeholder="Hull Rotation"
+              style={{ position: 'absolute', bottom: 80, left: '30%' }}
+            />
+            <TankComponent src={tankHullPng} degree={degree} alt="Tank Hull" />
+          </>
+        )}
+      </TankManager>
+
+      {/* Turret */}
+      <TankManager>
+        {({ degree, handleSet, handleReset }) => (
+          <>
+            <RotationBox
+              onSet={handleSet}
+              onReset={handleReset}
+              placeholder="Turret Rotation"
+              style={{ position: 'absolute', bottom: 80, left: '60%' }}
+            />
+            <TankComponent src={tankTurretPng} degree={degree} alt="Tank Turret" />
+          </>
+        )}
+      </TankManager>
     </div>
   );
 }
+
 export default App;

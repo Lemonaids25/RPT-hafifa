@@ -1,0 +1,39 @@
+.rotation-box-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.rotation-box-input {
+  width: 120px;
+  color: #222;
+  padding: 6px 8px;
+  border: 1.5px solid #2ecc40;
+  border-radius: 6px;
+  font-size: 1rem;
+  outline: none;
+  background: #eaffea;
+  transition: border 0.2s;
+}
+
+.rotation-box-input:focus {
+  border-color: #ff851b;
+}
+
+.rotation-box-button {
+  height: 28px;
+  background: #ff851b;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0 14px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 6px 0 #ff851b33;
+  transition: background 0.2s;
+}
+
+.rotation-box-button:last-child {
+  background: #2ecc40;
+  box-shadow: 0 2px 6px 0 #2ecc4033;
+}

@@ -1,0 +1,11 @@
+.tank-component-img {
+  position: absolute;
+  left: 50%;
+  top: 180px; /* Adjust as needed or override with a className */
+  width: min(20vw, 80px);
+  height: auto;
+  z-index: 3;
+  pointer-events: none;
+  user-select: none;
+  transition: transform 0.3s;
+}
