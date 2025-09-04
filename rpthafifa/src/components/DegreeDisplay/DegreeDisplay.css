@@ -1,0 +1,62 @@
+:root {
+  --degree-display-top: 10px;
+  --degree-display-left: 35%;
+  --degree-display-increment: 10%;
+  --degree-display-width: min(120vw, 500px);
+}
+.degree-display-container {
+  display: flex;
+  gap: 24px;
+  z-index: 100;
+}
+
+.degree-display-box {
+  border-radius: 8px;
+  padding: 8px 18px;
+  min-width: 90px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.1rem;
+  background: #eaffea;
+  border: 2px solid #2ecc40;
+  color: #2ecc40;
+  box-shadow: 0 2px 8px #2ecc4033;
+}
+/*
+1. reused code need to be a diff class which will be inherited
+2. we only use position based placing when the design is irregular - we always preffer flexboxes
+3. when we want to change styling of an aleardy built component - we do it for the instance of the component, and not the component itself
+*/
+
+.degree-display-box.hull {
+  background: #fff5e6;
+  border: 2px solid #ff851b;
+  color: #ff851b;
+  box-shadow: 0 2px 8px #ff851b33;
+  position: absolute;
+  top: var(--degree-display-top);
+  left: var(--degree-display-left);
+  z-index: 100;
+}
+
+.degree-display-box.turret {
+  background: #fff5e6;
+  border: 2px solid #ff851b;
+  color: #ff851b;
+  box-shadow: 0 2px 8px #ff851b33;
+  position: absolute;
+  top: var(--degree-display-top);
+  left: calc(var(--degree-display-left) + var(--degree-display-increment));
+  z-index: 100;
+}
+
+.degree-display-box.sight {
+  background: #e6f7ff;
+  border: 2px solid #0074d9;
+  color: #0074d9;
+  box-shadow: 0 2px 8px #0074d933;
+  position: absolute;
+  top: var(--degree-display-top);
+  left: calc(var(--degree-display-left) +  2 * var(--degree-display-increment));
+  z-index: 100;
+}

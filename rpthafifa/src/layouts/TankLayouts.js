@@ -1,9 +1,9 @@
 import React from 'react';
-import TankManager from '../Managers/TankManager';
-import TankComponent from '../components/TankComponents/TankComponent';
-import RotationBox from '../components/RotationBox/RotationBox.js';
-import tankPartsLayout from '../components/TankComponents/const';
-import '../components/TankComponents/TankComponent.css';
+import TankManager from '../Managers/DegreeManager.js';
+import { RotationBoxLayout } from './RotationBoxLayout';
+import { DegreeDisplayLayout } from './DegreeDisplay/DegreeDisplay.js';
+import { TankLayout } from './TankLayout';
+import tankPartsLayout from '../components/TankComponents/const.js';
 
 export function HullLayout() {
   const hull = tankPartsLayout.find(part => part.name === 'Hull');
@@ -17,6 +17,7 @@ export function HullLayout() {
             onReset={handleReset}
             placeholder={hull.placeholder}
           />
+          <DegreeDisplay {...hullConfig} value={degree} />
           <TankComponent
             src={hull.src}
             degree={degree}
@@ -41,6 +42,7 @@ export function TurretLayout() {
             onReset={handleReset}
             placeholder={turret.placeholder}
           />
+          <DegreeDisplay {...turretConfig} value={degree} />
           <TankComponent
             src={turret.src}
             degree={degree}
@@ -55,8 +57,8 @@ export function TurretLayout() {
 
 export function SightLayout() {
   const sight = tankPartsLayout.find(part => part.name === 'Commander Sight');
-  return (
-    <TankManager key={sight.name}>
+  return ( // change structure and use callbacks
+    <TankManager key={sight.name} id="sight-container">
       {({ degree, handleSet, handleReset }) => (
         <>
           <RotationBox
@@ -65,6 +67,7 @@ export function SightLayout() {
             onReset={handleReset}
             placeholder={sight.placeholder}
           />
+          <DegreeDisplay {...sightConfig} value={degree} />
           <TankComponent
             src={sight.src}
             degree={degree}

@@ -1,4 +1,4 @@
-.rotation-box-container {
+#rotation-box-id {
   display: flex;
   align-items: flex-start;
   gap: 8px;
@@ -6,7 +6,7 @@
   margin-bottom: 10px;
 }
 
-.rotation-box-input {
+#rotation-box-id .rotation-box-input {
   width: 120px;
   color: #222;
   padding: 6px 8px;
@@ -18,11 +18,11 @@
   transition: border 0.2s;
 }
 
-.rotation-box-input:focus {
+#rotation-box-id .rotation-box-input:focus {
   border-color: #ff851b;
 }
 
-.rotation-box-button {
+#rotation-box-id .rotation-box-button {
   height: 28px;
   background: #ff851b;
   color: #fff;
@@ -35,7 +35,7 @@
   transition: background 0.2s;
 }
 
-.rotation-box-button:last-child {
+#rotation-box-id .rotation-box-button:last-child {
   background: #2ecc40;
   box-shadow: 0 2px 6px 0 #2ecc4033;
 }

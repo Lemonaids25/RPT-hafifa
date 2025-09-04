@@ -3,7 +3,7 @@ import tankTurretPng from '../../assets/tank-turret.png';
 import commanderSight from '../../assets/commander-sight.png';
 import compassPng from '../../assets/360-degrees.png';
 
-const tankPartsLayout = [
+const tankPartsLayout = [ //move to whoever uses this
   {
     name: 'Compass',
     src: compassPng,

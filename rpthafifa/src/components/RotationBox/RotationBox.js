@@ -1,19 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import './RotationBox.css';
 
 export default function RotationBox({ onSet, onReset, placeholder = 'Rotation', style = {} }) {
   const [inputValue, setInputValue] = useState('');
 
-  const handleSet = () => { // useCallback 
-    const val = String(inputValue).replace(/[^0-9.-]/g, ''); // Why replace and not regex.Match() => Result / Null
-    const rotation = val === '' || val === '-' || val === '.' ? 0 : Number(val);
+  const handleSet = useCallback(() => {
+    const match = inputValue.match(/^-?[\d.]*$/);
+    const val = match ? match[0] : '';
+    const rotation = (val === '' || val === '-' || val === '.' ? 0 : Number(val));
     onSet(rotation);
     setInputValue('');
-  };
+  }, [inputValue, onSet]);
   // Display Missing
   
   return (
-    <div className="rotation-box-container" style={style}>
+    <div id="rotation-box-id" style={style}>
       <input
         type="text"
         value={inputValue}
@@ -32,5 +33,5 @@ export default function RotationBox({ onSet, onReset, placeholder = 'Rotation', 
         Reset
       </button>
     </div>
-  );
+  ); //In general it doesnt really matter but for Toolbox - Dont ever write text that isnt in a const in dict
 }
