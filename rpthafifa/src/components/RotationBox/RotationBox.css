@@ -1,7 +1,9 @@
 .rotation-box-container {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 8px;
+  margin-left: 82%;
+  margin-bottom: 10px;
 }
 
 .rotation-box-input {

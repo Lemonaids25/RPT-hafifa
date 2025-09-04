@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
-import './componentsCss/RotationBox.css';
+import './RotationBox.css';
 
 export default function RotationBox({ onSet, onReset, placeholder = 'Rotation', style = {} }) {
   const [inputValue, setInputValue] = useState('');
 
-  const handleSet = () => {
-    const val = String(inputValue).replace(/[^0-9.-]/g, '');
+  const handleSet = () => { // useCallback 
+    const val = String(inputValue).replace(/[^0-9.-]/g, ''); // Why replace and not regex.Match() => Result / Null
     const rotation = val === '' || val === '-' || val === '.' ? 0 : Number(val);
     onSet(rotation);
     setInputValue('');
   };
-
+  // Display Missing
+  
   return (
     <div className="rotation-box-container" style={style}>
       <input
@@ -22,12 +23,14 @@ export default function RotationBox({ onSet, onReset, placeholder = 'Rotation', 
         pattern="[0-9]*"
         placeholder={placeholder}
       />
+
       <button className="rotation-box-button" onClick={handleSet}>
         Set
       </button>
+
       <button className="rotation-box-button" onClick={onReset}>
         Reset
       </button>
-      </div>
+    </div>
   );
 }

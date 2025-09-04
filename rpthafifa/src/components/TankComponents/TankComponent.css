@@ -1,0 +1,44 @@
+:root {
+  --tank-component-top: 100px;
+  --tank-component-width: min(120vw, 500px);
+  --tank-component-left: 35%;
+}
+
+.tank-hull-style {
+  position: absolute;
+  top: var(--tank-component-top);
+  left: var(--tank-component-left);
+  width: var(--tank-component-width);
+  transition: 0.3s;
+  height: auto;
+}
+
+.tank-turret-style {
+  position: absolute;
+  top: var(--tank-component-top);
+  left: var(--tank-component-left);
+  width: var(--tank-component-width);
+  transition: 0.3s;
+  height: auto;
+}
+
+.commander-sight-style {
+  position: absolute;
+  top: var(--tank-component-top);
+  left: var(--tank-component-left);
+  width: var(--tank-component-width);
+  transition: 0.3s;
+  height: auto;
+}
+
+.compass-style {
+  position: absolute;
+  top: var(--tank-component-top);
+  left: var(--tank-component-left);
+  width: var(--tank-component-width);
+  transform: translateX(-50%);
+  height: auto;
+  pointer-events: none;
+  user-select: none;
+  transition: 0.3s;
+}
