@@ -1,9 +1,10 @@
 import React from 'react';
 import TankManager from '../Managers/DegreeManager.js';
-import { RotationBoxLayout } from './RotationBoxLayout';
-import { DegreeDisplayLayout } from './DegreeDisplay/DegreeDisplay.js';
-import { TankLayout } from './TankLayout';
+import RotationBox from '../components/RotationBox/RotationBox.js';
+import DegreeDisplay from '../components/DegreeDisplay/DegreeDisplay.js';
+import TankComponent from '../components/TankComponents/TankComponent.js';
 import tankPartsLayout from '../components/TankComponents/const.js';
+import { hullConfig, turretConfig, sightConfig } from '../components/DegreeDisplay/Const.js';
 
 export function HullLayout() {
   const hull = tankPartsLayout.find(part => part.name === 'Hull');
