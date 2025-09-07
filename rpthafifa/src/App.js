@@ -1,17 +1,18 @@
 import React from 'react';
-
-import { HullLayout, TurretLayout, SightLayout, CompassLayout } from './Layouts/TankLayouts.js';
-
-
+import { PartsDegreeProvider } from './Managers/PartsDegreeContext';
+import RotationBoxesContainer from './Layouts/RotationBoxesContainer';
+import DegreeDisplaysContainer from './Layouts/DegreeDisplaysContainer';
+import TankContainer from './Layouts/TankContainer';
 
 function App() {
   return (
-    <div>
-  <CompassLayout />
-  <HullLayout />
-  <TurretLayout />
-  <SightLayout />
-    </div>
+    <PartsDegreeProvider>
+      <div>
+        <DegreeDisplaysContainer />
+        <RotationBoxesContainer />
+        <TankContainer />
+      </div>
+    </PartsDegreeProvider>
   );
 }
 

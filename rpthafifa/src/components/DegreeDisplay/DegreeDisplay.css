@@ -1,13 +1,12 @@
 :root {
-  --degree-display-top: 10px;
-  --degree-display-left: 35%;
-  --degree-display-increment: 10%;
   --degree-display-width: min(120vw, 500px);
 }
 .degree-display-container {
   display: flex;
-  gap: 24px;
-  z-index: 100;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  padding: 8px 0;
 }
 
 .degree-display-box {
@@ -33,10 +32,6 @@
   border: 2px solid #ff851b;
   color: #ff851b;
   box-shadow: 0 2px 8px #ff851b33;
-  position: absolute;
-  top: var(--degree-display-top);
-  left: var(--degree-display-left);
-  z-index: 100;
 }
 
 .degree-display-box.turret {
@@ -44,10 +39,6 @@
   border: 2px solid #ff851b;
   color: #ff851b;
   box-shadow: 0 2px 8px #ff851b33;
-  position: absolute;
-  top: var(--degree-display-top);
-  left: calc(var(--degree-display-left) + var(--degree-display-increment));
-  z-index: 100;
 }
 
 .degree-display-box.sight {
@@ -55,8 +46,4 @@
   border: 2px solid #0074d9;
   color: #0074d9;
   box-shadow: 0 2px 8px #0074d933;
-  position: absolute;
-  top: var(--degree-display-top);
-  left: calc(var(--degree-display-left) +  2 * var(--degree-display-increment));
-  z-index: 100;
 }

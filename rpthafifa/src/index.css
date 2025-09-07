@@ -1,1 +1,26 @@
 /* Add your global styles here or leave empty */
+
+#tank-container {
+	position: relative;
+	width: 100%;
+	min-height: 420px; /* room for stacked images */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#rotation-boxes-container {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	align-items: flex-end;
+	padding: 10px 20px;
+}
+
+#degree-displays-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 16px;
+	min-height: 60px;
+}

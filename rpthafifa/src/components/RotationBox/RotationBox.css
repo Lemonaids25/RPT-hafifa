@@ -1,8 +1,8 @@
 #rotation-box-id {
   display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  margin-left: 82%;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
   margin-bottom: 10px;
 }
 
