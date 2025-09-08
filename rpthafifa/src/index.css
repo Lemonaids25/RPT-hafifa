@@ -1,33 +1,13 @@
-/* Add your global styles here or leave empty */
 
-#tank-container {
-	position: relative;
-	width: 100%;
-	min-height: 420px; /* room for stacked images */
-	display: flex;
-	justify-content: center;
-	align-items: center;
+
+html, body, #root {
+	height: 100%;
 }
 
-#rotation-boxes-container {
-	display: flex;
-	flex-direction: column;
-	gap: 12px;
-	align-items: flex-end;
-	padding: 10px 20px;
+body {
+	margin: 0;
+	background-color: #4B5320; /* army green */
+	color: #f2f2f2; /* optional: light text for contrast */
+	font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 }
 
-#degree-displays-container {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	gap: 16px;
-	min-height: 60px;
-}
-
-#pitch-roll-container {
-	display: flex;
-	flex-direction: column;
-	gap: 16px;
-	align-items: flex-start;
-}

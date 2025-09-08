@@ -1,6 +1,7 @@
 :root {
-  --tank-component-top: 100px;
-  --tank-component-width: min(120vw, 500px);
+  /* Responsive tank positioning/sizing */
+  --tank-component-top: clamp(100px, 10vh, 120px);
+  --tank-component-width: clamp(230px, 60vw, 500px);
   --tank-transition: 0.3s;
 }
 
