@@ -5,10 +5,7 @@ import sideView from '../../assets/tank-side-view.png';
 import backView from '../../assets/tank-back-view.png';
 import { classifyAngle } from '../../utils/status';
 
-export const STATUS_THRESHOLDS = {
-	green: 12,
-	orange: 20,
-};
+// Thresholds now default from utils/status; override per-call by passing a second arg to classifyAngle if needed.
 
 export const GAUGES = [
 	{
@@ -32,9 +29,9 @@ export function buildItems(gauges, stateById) {
 
 // Build the dynamic state map by id; derives statuses from degrees using thresholds
 export function buildStateById(pitch, roll) {
-	const pitchStatus = classifyAngle(pitch.degree, STATUS_THRESHOLDS);
-	const rollStatus = classifyAngle(roll.degree, STATUS_THRESHOLDS);
-        
+	const pitchStatus = classifyAngle(pitch.degree);
+	const rollStatus = classifyAngle(roll.degree);
+
 	return {
 		Pitch: {
 			degree: pitch.degree,
