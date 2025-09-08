@@ -1,25 +1,31 @@
 import React, { createContext, useContext, useMemo, useState, useCallback } from 'react';
 
 // Parts supported across the app
-export const PARTS = ['Hull', 'Turret', 'Commander Sight'];
+export const PARTS = ['Hull', 'Turret', 'Commander Sight', 'Pitch', 'Roll'];
 
 const PartsDegreeContext = createContext(null);
 
-export function PartsDegreeProvider({ children, initial = { Hull: 0, Turret: 0, 'Commander Sight': 0 } }) {
+export function PartsDegreeProvider({ children, initial = { Hull: 0, Turret: 0, 'Commander Sight': 0, Pitch: 0, Roll: 0 } }) {
   const [hull, setHull] = useState(initial.Hull ?? 0);
   const [turret, setTurret] = useState(initial.Turret ?? 0);
   const [sight, setSight] = useState(initial['Commander Sight'] ?? 0);
+  const [pitch, setPitch] = useState(initial.Pitch ?? 0);
+  const [roll, setRoll] = useState(initial.Roll ?? 0);
 
   const setMap = {
     Hull: setHull,
     Turret: setTurret,
     'Commander Sight': setSight,
+    Pitch: setPitch,
+    Roll: setRoll,
   };
 
   const degreeMap = {
     Hull: hull,
     Turret: turret,
     'Commander Sight': sight,
+    Pitch: pitch,
+    Roll: roll,
   };
 
   const value = useMemo(() => {
@@ -34,7 +40,7 @@ export function PartsDegreeProvider({ children, initial = { Hull: 0, Turret: 0, 
         if (setter) setter(0);
       },
     };
-  }, [hull, turret, sight]);
+  }, [hull, turret, sight, pitch, roll]);
 
   return <PartsDegreeContext.Provider value={value}>{children}</PartsDegreeContext.Provider>;
 }

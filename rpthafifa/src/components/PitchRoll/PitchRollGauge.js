@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import './TankComponent.css';
 import { nextAngleShortest } from '../../utils/angles';
 
-export default function TankComponent({ src, degree = 0, alt = "Tank Component", className = "" }) {
-  // Keep a cumulative render angle so transitions take the shortest path
+// Self-contained gauge image that rotates using the shortest path
+export default function PitchRollGauge({ src, degree = 0, alt = 'Gauge', className = '' }) {
   const [renderAngle, setRenderAngle] = useState(0);
 
   useEffect(() => {
-      setRenderAngle((prev) => nextAngleShortest(prev, degree));
-    }, [degree]);
+    setRenderAngle((prev) => nextAngleShortest(prev, degree));
+  }, [degree]);
 
   return (
     <img
