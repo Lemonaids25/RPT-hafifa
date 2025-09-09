@@ -8,7 +8,6 @@ import commanderSight from '../assets/commander-sight.png';
 import compassPng from '../assets/360-degrees.png';
 
 export default function TankContainer() {
-  // Call hooks at the top level (fixed rules-of-hooks)
   const hull = usePartDegree('Hull');
   const turret = usePartDegree('Turret');
   const sight = usePartDegree('Commander Sight');

@@ -1,12 +1,4 @@
 import React from 'react';
-
-// Tiny reusable collapse/expand button
-// Props:
-// - collapsed: boolean
-// - onClick: () => void
-// - className?: string (defaults to 'collapse-toggle' to match CSS)
-// - expandSymbol?: ReactNode (default '‹') when expanded
-// - collapseSymbol?: ReactNode (default '›') when collapsed
 export default function CollapseToggle({
   collapsed,
   onClick,

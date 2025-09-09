@@ -15,7 +15,6 @@ function RotationRow({ partId, label }) {
 }
 
 export default function RotationBoxesContainer() {
-  // No hooks here; hooks are used inside RotationRow per part
 
   return (
     <div id="rotation-boxes-container">

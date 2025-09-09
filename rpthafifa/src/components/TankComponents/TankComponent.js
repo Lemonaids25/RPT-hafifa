@@ -3,7 +3,6 @@ import './TankComponent.css';
 import { nextAngleShortest } from '../../utils/angles';
 
 export default function TankComponent({ src, degree = 0, alt = "Tank Component", className = "" }) {
-  // Keep a cumulative render angle so transitions take the shortest path
   const [renderAngle, setRenderAngle] = useState(0);
 
   useEffect(() => {

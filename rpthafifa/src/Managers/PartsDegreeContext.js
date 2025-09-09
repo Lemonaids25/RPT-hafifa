@@ -1,6 +1,5 @@
 import React, { createContext, useContext, useMemo, useState, useCallback } from 'react';
 
-// Parts supported across the app
 export const PARTS = ['Hull', 'Turret', 'Commander Sight', 'Pitch', 'Roll'];
 
 const PartsDegreeContext = createContext(null);
@@ -12,7 +11,6 @@ export function PartsDegreeProvider({ children, initial = { Hull: 0, Turret: 0, 
   const [pitch, setPitch] = useState(initial.Pitch ?? 0);
   const [roll, setRoll] = useState(initial.Roll ?? 0);
 
-  // Stable map of setters (state setter functions are stable across renders)
   const setMap = useMemo(() => ({
     Hull: setHull,
     Turret: setTurret,
@@ -21,7 +19,6 @@ export function PartsDegreeProvider({ children, initial = { Hull: 0, Turret: 0, 
     Roll: setRoll,
   }), []);
 
-  // Degrees map changes when any degree changes; memoize for stable identity per update
   const degreeMap = useMemo(() => ({
     Hull: hull,
     Turret: turret,
@@ -30,7 +27,6 @@ export function PartsDegreeProvider({ children, initial = { Hull: 0, Turret: 0, 
     Roll: roll,
   }), [hull, turret, sight, pitch, roll]);
 
-  // Stable callbacks for consumers
   const getDegree = useCallback((part) => degreeMap[part] ?? 0, [degreeMap]);
   const setDegree = useCallback((part, val) => {
     const setter = setMap[part];
