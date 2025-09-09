@@ -11,7 +11,7 @@ export default function DegreeDisplaysContainer() {
     <div id="degree-displays-container" className="degree-display-container">
       <DegreeDisplay label="Hull" className="hull" value={hull.degree} />
       <DegreeDisplay label="Turret" className="turret" value={turret.degree} />
-      <DegreeDisplay label="Commander Sight" className="sight" value={sight.degree} />
+      <DegreeDisplay label="Sight" className="sight" value={sight.degree} />
     </div>
   );
 }
