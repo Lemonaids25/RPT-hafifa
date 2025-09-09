@@ -7,7 +7,7 @@
 .degree-display-container {
   display: flex;
   justify-content: space-evenly;
-  align-items: center;
+  align-items: flex-start;
   padding: 25px 5px;
   width: var(--degree-display-width);
   max-width: 40%;

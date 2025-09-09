@@ -1,9 +1,21 @@
+#rotation-boxes-container {
+  display: flex;
+  flex-direction: column; /* stack boxes one on top of the other */
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  /* participate in bottom row flow; align to the right side via auto margin */
+  align-self: center;
+  margin-left: auto;
+  padding: 100px 12px  ;
+  width: fit-content;
+}
+
 #rotation-box-id {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  gap: 12px;
-  margin-bottom: 10px;
+  justify-content: center;
+  gap: 8px;
 }
 
 #rotation-box-id .rotation-box-input {
@@ -24,10 +36,9 @@
 
 #rotation-box-id .rotation-box-button {
   height: 28px;
-  background: #ff851b;
   color: #fff;
   border: none;
-  border-radius: 6px;
+  border-radius: 20px;
   padding: 0 14px;
   font-weight: 600;
   cursor: pointer;

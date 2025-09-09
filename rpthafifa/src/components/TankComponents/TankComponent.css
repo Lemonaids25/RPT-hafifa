@@ -8,7 +8,7 @@
 /* Flex wrapper to center and stack images */
 .tank-stack {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   width: 100%;
   height: 100%;
 }
