@@ -24,8 +24,13 @@
   height: auto;
   transition: var(--tank-transition);
   transform: translateX(-50%);
+  z-index: 0; /* keep tank visuals at the bottom of the stacking context */
 }
 
+/* Make tank layers non-interactive so they never block UI clicks */
+.tank-hull-style,
+.tank-turret-style,
+.commander-sight-style,
 .compass-style {
   pointer-events: none;
   user-select: none;

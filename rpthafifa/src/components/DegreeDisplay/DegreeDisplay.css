@@ -14,6 +14,22 @@
   margin-inline: auto; /* center horizontally so the middle lines up with tank */
 }
 
+.degree-display-button {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+.degree-display-button:focus-visible .degree-display-box {
+  outline: 2px solid var(--pr-green, #2ecc71);
+  outline-offset: 2px;
+}
+
+.degree-display-button.active .degree-display-box {
+  box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.35);
+}
+
 .degree-display-box {
   display: flex;
   flex-direction: column;
@@ -25,10 +41,11 @@
   text-align: center;
   font-weight: 600;
   font-size: fit-content;
-  background: #eaffea;
-  border: 2px solid #2ecc40;
-  color: #2ecc40;
-  box-shadow: 0 2px 8px #2ecc4033;
+  background: #000;
+  border: 2px solid #444;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+  transition: border-color .2s ease, box-shadow .2s ease, transform .15s ease;
 }
 /*
 1. reused code need to be a diff class which will be inherited
@@ -39,9 +56,21 @@
 .degree-display-box.hull,
 .degree-display-box.turret,
 .degree-display-box.sight {
-  background: #ecffe600;
-  border: 2px solid #ff851b;
-  color: #ff851b;
-  box-shadow: 0 2px 8px #ff851b33;
+  /* Keep the unified black theme; do not override colors per part */
+  background: #000;
+  border-color: #444;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+}
+
+/* Hover/active states to make selection obvious */
+.degree-display-button:hover .degree-display-box {
+  border-color: var(--pr-green, #2ecc71);
+}
+
+.degree-display-button.active .degree-display-box {
+  border-color: var(--pr-green, #2ecc71);
+  box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.45), 0 6px 16px rgba(0,0,0,0.6);
+  transform: scale(1.04);
 }
 

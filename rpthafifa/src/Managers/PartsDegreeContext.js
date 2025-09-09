@@ -10,6 +10,8 @@ export function PartsDegreeProvider({ children, initial = { Hull: 0, Turret: 0, 
   const [sight, setSight] = useState(initial['Commander Sight'] ?? 0);
   const [pitch, setPitch] = useState(initial.Pitch ?? 0);
   const [roll, setRoll] = useState(initial.Roll ?? 0);
+  // Selected reference part for relative view (null -> absolute view)
+  const [referencePart, setReferencePart] = useState(null);
 
   const setMap = useMemo(() => ({
     Hull: setHull,
@@ -37,7 +39,13 @@ export function PartsDegreeProvider({ children, initial = { Hull: 0, Turret: 0, 
     if (setter) setter(0);
   }, [setMap]);
 
-  const value = useMemo(() => ({ getDegree, setDegree, resetDegree }), [getDegree, setDegree, resetDegree]);
+  const value = useMemo(() => ({
+    getDegree,
+    setDegree,
+    resetDegree,
+    referencePart,
+    setReferencePart,
+  }), [getDegree, setDegree, resetDegree, referencePart]);
 
   return <PartsDegreeContext.Provider value={value}>{children}</PartsDegreeContext.Provider>;
 }
@@ -50,4 +58,11 @@ export function usePartDegree(part) {
   const onSet = useCallback((v) => setDegree(part, v), [setDegree, part]);
   const onReset = useCallback(() => resetDegree(part), [resetDegree, part]);
   return { degree, onSet, onReset };
+}
+
+export function useReferencePart() {
+  const ctx = useContext(PartsDegreeContext);
+  if (!ctx) throw new Error('useReferencePart must be used within PartsDegreeProvider');
+  const { referencePart, setReferencePart } = ctx;
+  return { referencePart, setReferencePart };
 }

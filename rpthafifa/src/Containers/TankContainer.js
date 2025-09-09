@@ -1,16 +1,22 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import TankComponent from '../components/TankComponents/TankComponent';
-import { usePartDegree } from '../Managers/PartsDegreeContext';
+import { usePartDegree, useReferencePart } from '../Managers/PartsDegreeContext';
 import '../components/TankComponents/TankComponent.css';
 import tankHullPng from '../assets/tank-hull.png';
 import tankTurretPng from '../assets/tank-turret.png';
 import commanderSight from '../assets/commander-sight.png';
 import compassPng from '../assets/360-degrees.png';
+import { toRelativeDegrees, compassDegreeRelative } from '../utils/angles';
 
 export default function TankContainer() {
   const hull = usePartDegree('Hull');
   const turret = usePartDegree('Turret');
   const sight = usePartDegree('Commander Sight');
+  const { referencePart } = useReferencePart();
+
+  const abs = useMemo(() => ({ Hull: hull.degree, Turret: turret.degree, 'Commander Sight': sight.degree }), [hull.degree, turret.degree, sight.degree]);
+  const rel = useMemo(() => toRelativeDegrees(abs, referencePart, false), [abs, referencePart]);
+  const compassDegree = useMemo(() => compassDegreeRelative(abs, referencePart, 90), [abs, referencePart]);
 
   return (
     <div id="tank-container">
@@ -19,29 +25,29 @@ export default function TankContainer() {
         <TankComponent
           key={'Compass'}
           src={compassPng}
-          degree={90}
-          alt={'Compass'}
+          degree={compassDegree}
+          alt={'Compass'}       
           className={'compass-style'}
         />
 
         <TankComponent
           key={'Hull'}
           src={tankHullPng}
-          degree={hull.degree}
+          degree={referencePart ? rel['Hull'] : hull.degree}
           alt={'Hull Rotation'}
           className={'tank-hull-style'}
         />
         <TankComponent
           key={'Turret'}
           src={tankTurretPng}
-          degree={turret.degree}
+          degree={referencePart ? rel['Turret'] : turret.degree}
           alt={'Turret Rotation'}
           className={'tank-turret-style'}
         />
         <TankComponent
           key={'Commander Sight'}
           src={commanderSight}
-          degree={sight.degree}
+          degree={referencePart ? rel['Commander Sight'] : sight.degree}
           alt={'Commander Sight Rotation'}
           className={'commander-sight-style'}
         />

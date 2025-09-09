@@ -9,14 +9,14 @@ function App() {
   return (
     <PartsDegreeProvider>
       <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'stretch', gap: 16 }}>
-        <div style={{ minWidth: 200 }}>
+        <div>
           <PitchRollContainer />
         </div>
         <div style={{ flex: 1 }}>
           <DegreeDisplaysContainer />
           <TankContainer />
         </div>
-        <div style={{ minWidth: 260 }}>
+        <div>
           <RotationBoxesContainer />
         </div>
       </div>

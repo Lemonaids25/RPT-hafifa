@@ -31,3 +31,25 @@ export function nextAngleShortest(current, target) {
 export function normalize360Rounded(v) {
   return Math.round(normalize360(v));
 }
+
+// Compute a map of relative degrees given an absolute degree map and a reference key
+// degrees: Record<string, number>, refKey: string|null
+// returns: Record<string, number> where ref is 0 and others are normalized to [-180,180] for logic or [0,360) for display
+export function toRelativeDegrees(degrees, refKey, forDisplay = false) {
+  if (!refKey || !(refKey in degrees)) return { ...degrees };
+  const ref = degrees[refKey] ?? 0;
+  const out = {};
+  for (const k of Object.keys(degrees)) {
+    const delta = degrees[k] - ref;
+    out[k] = forDisplay ? normalize360(delta) : normalize180(delta);
+  }
+  return out;
+}
+
+// Compute the compass rotation so that the selected reference part appears at 0
+// absDegrees: Record<string, number>, refKey: string|null, base: number (default 90)
+export function compassDegreeRelative(absDegrees, refKey, base = 90) {
+  if (!refKey) return base;
+  const refAbs = (absDegrees && refKey in absDegrees) ? absDegrees[refKey] : 0;
+  return base - refAbs;
+}
