@@ -1,5 +1,6 @@
 import React from 'react';
 import { usePartDegree } from '../Managers/PartsDegreeContext';
+import { usePartPreview } from '../Managers/PreviewDegreeContext';
 import NumberSetReset from '../components/inputs/NumberSetReset';
 const PARTS = [
   { id: 'Hull', label: 'Hull Rotation' },
@@ -8,9 +9,10 @@ const PARTS = [
 ];
 
 function RotationRow({ partId, label }) {
-  const { onSet, onReset } = usePartDegree(partId);
+  const { onSet } = usePartDegree(partId);
+  const { setPreview, clearPreview } = usePartPreview(partId);
   return (
-    <NumberSetReset placeholder={label} onSet={onSet} onReset={onReset} />
+    <NumberSetReset placeholder={label} onSet={onSet} onPreview={setPreview} onPreviewClear={clearPreview} />
   );
 }
 

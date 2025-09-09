@@ -1,5 +1,6 @@
 import React from 'react';
 import { PartsDegreeProvider } from './Managers/PartsDegreeContext';
+import { PreviewDegreeProvider } from './Managers/PreviewDegreeContext';
 import RotationBoxesContainer from './Containers/RotationBoxesContainer.js';
 import DegreeDisplaysContainer from './Containers/DegreeDisplaysContainer.js';
 import TankContainer from './Containers/TankContainer.js';
@@ -9,6 +10,7 @@ import './App.css';
 function App() {
   return (
     <PartsDegreeProvider>
+      <PreviewDegreeProvider>
       <div className="app-layout">
         <div className="app-left">
           <PitchRollContainer />
@@ -21,6 +23,7 @@ function App() {
           <RotationBoxesContainer />
         </div>
       </div>
+      </PreviewDegreeProvider>
     </PartsDegreeProvider>
   );
 }
