@@ -1,46 +1,33 @@
 import React, { createContext, useContext, useMemo, useState, useCallback } from 'react';
-
-export const PARTS = ['Hull', 'Turret', 'Commander Sight', 'Pitch', 'Roll'];
+import { ALL_PART_IDS, PARTS_CONFIG } from '../config/parts'; // Import from new config
 
 const PartsDegreeContext = createContext(null);
 
-export function PartsDegreeProvider({ children, initial = { Hull: 0, Turret: 0, 'Commander Sight': 0, Pitch: 0, Roll: 0 } }) {
-  const [hull, setHull] = useState(initial.Hull ?? 0);
-  const [turret, setTurret] = useState(initial.Turret ?? 0);
-  const [sight, setSight] = useState(initial['Commander Sight'] ?? 0);
-  const [pitch, setPitch] = useState(initial.Pitch ?? 0);
-  const [roll, setRoll] = useState(initial.Roll ?? 0);
-  // Selected reference part for relative view (null -> absolute view)
+// Create initial state dynamically from the config
+const initialDegrees = ALL_PART_IDS.reduce((acc, partId) => {
+  acc[partId] = 0;
+  return acc;
+}, {});
+
+export function PartsDegreeProvider({ children, initial = {} }) {
+  const [degrees, setDegrees] = useState({ ...initialDegrees, ...initial });
   const [referencePart, setReferencePart] = useState(null);
 
-  const setMap = useMemo(() => ({
-    Hull: setHull,
-    Turret: setTurret,
-    'Commander Sight': setSight,
-    Pitch: setPitch,
-    Roll: setRoll,
-  }), []);
+  const getDegree = useCallback((part) => degrees[part] ?? 0, [degrees]);
 
-  const degreeMap = useMemo(() => ({
-    Hull: hull,
-    Turret: turret,
-    'Commander Sight': sight,
-    Pitch: pitch,
-    Roll: roll,
-  }), [hull, turret, sight, pitch, roll]);
-
-  const getDegree = useCallback((part) => degreeMap[part] ?? 0, [degreeMap]);
   const setDegree = useCallback((part, val) => {
-    const setter = setMap[part];
-    if (setter) setter(val);
-  }, [setMap]);
+    if (PARTS_CONFIG[part]) {
+      setDegrees(d => ({ ...d, [part]: val }));
+    }
+  }, []);
 
   const value = useMemo(() => ({
+    degrees, // Expose all degrees
     getDegree,
     setDegree,
     referencePart,
     setReferencePart,
-  }), [getDegree, setDegree, referencePart]);
+  }), [degrees, getDegree, setDegree, referencePart]);
 
   return <PartsDegreeContext.Provider value={value}>{children}</PartsDegreeContext.Provider>;
 }
@@ -48,10 +35,16 @@ export function PartsDegreeProvider({ children, initial = { Hull: 0, Turret: 0, 
 export function usePartDegree(part) {
   const ctx = useContext(PartsDegreeContext);
   if (!ctx) throw new Error('usePartDegree must be used within PartsDegreeProvider');
-  const { getDegree, setDegree} = ctx;
+  const { getDegree, setDegree } = ctx;
   const degree = getDegree(part);
   const onSet = useCallback((v) => setDegree(part, v), [setDegree, part]);
-  return { degree, onSet};
+  return { degree, onSet };
+}
+
+export function useAllDegrees() {
+  const ctx = useContext(PartsDegreeContext);
+  if (!ctx) throw new Error('useAllDegrees must be used within PartsDegreeProvider');
+  return ctx.degrees;
 }
 
 export function useReferencePart() {

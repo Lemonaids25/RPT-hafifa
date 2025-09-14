@@ -1,41 +1,54 @@
-import React, { createContext, useCallback, useContext, useMemo, useState } from 'react';
+// In src/Managers/PreviewDegreeContext.jsx
+
+import React, { createContext, useContext, useMemo, useState, useCallback } from 'react';
+import { ROTATIONAL_PART_IDS } from '../config/parts';
 
 const PreviewDegreeContext = createContext(null);
 
+// Create initial state dynamically
+const initialPreviews = ROTATIONAL_PART_IDS.reduce((acc, partId) => {
+  acc[partId] = null;
+  return acc;
+}, {});
+
 export function PreviewDegreeProvider({ children }) {
-  const [preview, setPreview] = useState({}); // { [part]: number }
+  const [previews, setPreviews] = useState(initialPreviews);
 
-  const setPreviewDegree = useCallback((part, val) => {
-    setPreview((p) => {
-      const next = { ...p };
-      if (val === null || val === undefined || Number.isNaN(val)) delete next[part];
-      else next[part] = val;
-      return next;
-    });
+  const setPreview = useCallback((part, value) => {
+    setPreviews(p => ({ ...p, [part]: value }));
   }, []);
 
-  const clearPreviewDegree = useCallback((part) => {
-    setPreview((p) => {
-      if (!(part in p)) return p;
-      const next = { ...p };
-      delete next[part];
-      return next;
-    });
+  const clearPreview = useCallback((part) => {
+    setPreviews(p => ({ ...p, [part]: null }));
   }, []);
 
-  const value = useMemo(() => ({ preview, setPreviewDegree, clearPreviewDegree }), [preview, setPreviewDegree, clearPreviewDegree]);
+  const value = useMemo(() => ({
+    previews,
+    setPreview,
+    clearPreview,
+  }), [previews, setPreview, clearPreview]);
 
   return <PreviewDegreeContext.Provider value={value}>{children}</PreviewDegreeContext.Provider>;
 }
 
+// Hook for a single part
 export function usePartPreview(part) {
   const ctx = useContext(PreviewDegreeContext);
-  if (!ctx) throw new Error('usePartPreview must be used within PreviewDegreeProvider');
-  const { preview, setPreviewDegree, clearPreviewDegree } = ctx;
-  const value = preview?.[part];
-  const set = useCallback((val) => setPreviewDegree(part, val), [setPreviewDegree, part]);
-  const clear = useCallback(() => clearPreviewDegree(part), [clearPreviewDegree, part]);
-  return { preview: value, setPreview: set, clearPreview: clear };
+  if (!ctx) throw new Error('usePartPreview must be used within a PreviewDegreeProvider');
+  
+  const { setPreview, clearPreview } = ctx;
+  const preview = ctx.previews[part] ?? null;
+
+  return {
+    preview,
+    setPreview: (value) => setPreview(part, value),
+    clearPreview: () => clearPreview(part),
+  };
 }
 
-export default PreviewDegreeContext;
+// New hook to get all previews
+export function useAllPreviews() {
+  const ctx = useContext(PreviewDegreeContext);
+  if (!ctx) throw new Error('useAllPreviews must be used within a PreviewDegreeProvider');
+  return ctx.previews;
+}

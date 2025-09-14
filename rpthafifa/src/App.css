@@ -1,18 +1,28 @@
 .app-layout {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
-  align-items: stretch;
+  overflow: hidden;
 }
 
 .app-left {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .app-main {
+  flex-grow: 1;
   display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .app-right {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
 }

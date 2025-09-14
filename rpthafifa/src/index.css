@@ -1,5 +1,3 @@
-
-
 html, body, #root {
 	height: 100%;
 }
@@ -9,5 +7,11 @@ body {
 	background-color: #4B5320; /* army green */
 	color: #f2f2f2; /* optional: light text for contrast */
 	font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+:root {
+  --status-green-color: #4caf50;
+  --status-orange-color: #ff9800;
+  --status-red-color: #f44336;
 }
 

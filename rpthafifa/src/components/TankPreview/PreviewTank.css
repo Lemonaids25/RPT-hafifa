@@ -1,0 +1,12 @@
+:root {
+  --preview-opacity: 0.8;
+  --preview-filter: saturate(1.5) hue-rotate(120deg) brightness(1.05);
+}
+
+.tank-preview {
+  opacity: var(--preview-opacity);
+  filter: var(--preview-filter);
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}

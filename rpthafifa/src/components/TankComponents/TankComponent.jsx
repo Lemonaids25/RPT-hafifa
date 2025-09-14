@@ -13,8 +13,8 @@ export default function TankComponent({ src, degree = 0, alt = "Tank Component",
     <img
       src={src}
       alt={alt}
-      className={className}
-      style={{ transform: `rotate(${renderAngle}deg)` }}
+      className={`tank-component ${className}`}
+      style={{ transform: `translate(-50%, -50%) rotate(${renderAngle}deg)` }}
       draggable={false}
     />
   );
