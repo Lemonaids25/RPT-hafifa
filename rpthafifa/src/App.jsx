@@ -1,10 +1,10 @@
 import React from 'react';
-import { PartsDegreeProvider } from './Managers/PartsDegreeContext';
-import { PreviewDegreeProvider } from './Managers/PreviewDegreeContext';
-import RotationBoxesContainer from './Containers/RotationBoxesContainer.js';
-import DegreeDisplaysContainer from './Containers/DegreeDisplaysContainer.js';
-import TankContainer from './Containers/TankContainer.js';
-import PitchRollContainer from './Containers/PitchRollContainer.js';
+import { PartsDegreeProvider } from './Managers/PartsDegreeContext.jsx';
+import { PreviewDegreeProvider } from './Managers/PreviewDegreeContext.jsx';
+import RotationBoxesContainer from './Containers/RotationBoxesContainer.jsx';
+import DegreeDisplaysContainer from './Containers/DegreeDisplaysContainer.jsx';
+import TankContainer from './Containers/TankContainer.jsx';
+import PitchRollContainer from './Containers/PitchRollContainer.jsx';
 import './App.css';
 
 function App() {
