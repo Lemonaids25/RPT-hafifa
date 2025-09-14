@@ -7,6 +7,7 @@ import tankTurretPng from '../assets/tank-turret.png';
 import commanderSight from '../assets/commander-sight.png';
 import compassPng from '../assets/360-degrees.png';
 import { toRelativeDegrees, compassDegreeRelative } from '../utils/angles';
+import PreviewDegreeContainer from './PreviewDegreeContainer';
 
 export default function TankContainer() {
   const hull = usePartDegree('Hull');
@@ -37,6 +38,7 @@ export default function TankContainer() {
           alt={'Hull Rotation'}
           className={'tank-hull-style'}
         />
+  <PreviewDegreeContainer />
         <TankComponent
           key={'Turret'}
           src={tankTurretPng}

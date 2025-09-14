@@ -34,18 +34,13 @@ export function PartsDegreeProvider({ children, initial = { Hull: 0, Turret: 0, 
     const setter = setMap[part];
     if (setter) setter(val);
   }, [setMap]);
-  const resetDegree = useCallback((part) => {
-    const setter = setMap[part];
-    if (setter) setter(0);
-  }, [setMap]);
 
   const value = useMemo(() => ({
     getDegree,
     setDegree,
-    resetDegree,
     referencePart,
     setReferencePart,
-  }), [getDegree, setDegree, resetDegree, referencePart]);
+  }), [getDegree, setDegree, referencePart]);
 
   return <PartsDegreeContext.Provider value={value}>{children}</PartsDegreeContext.Provider>;
 }
@@ -53,11 +48,10 @@ export function PartsDegreeProvider({ children, initial = { Hull: 0, Turret: 0, 
 export function usePartDegree(part) {
   const ctx = useContext(PartsDegreeContext);
   if (!ctx) throw new Error('usePartDegree must be used within PartsDegreeProvider');
-  const { getDegree, setDegree, resetDegree } = ctx;
+  const { getDegree, setDegree} = ctx;
   const degree = getDegree(part);
   const onSet = useCallback((v) => setDegree(part, v), [setDegree, part]);
-  const onReset = useCallback(() => resetDegree(part), [resetDegree, part]);
-  return { degree, onSet, onReset };
+  return { degree, onSet};
 }
 
 export function useReferencePart() {

@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import '../inputs/RotationBox.css';
 
-export default function NumberSetReset({ onSet, placeholder = 'Value', min, max, step = 1, validate }) {
+export default function NumberSetReset({ onSet, onPreview, onPreviewClear, placeholder = 'Value', min, max, step = 1, validate }) {
   const [inputValue, setInputValue] = useState('');
 
   const parse = useCallback((raw) => {
@@ -20,14 +20,22 @@ export default function NumberSetReset({ onSet, placeholder = 'Value', min, max,
     const v = parse(inputValue);
     onSet(v ?? 0);
     setInputValue('');
+    if (onPreviewClear) onPreviewClear();
   }, [inputValue, onSet, parse]);
+
+  const handleChange = useCallback((e) => {
+    const val = e.target.value;
+    setInputValue(val);
+    if (onPreview) onPreview(parse(val));
+  }, [parse, onPreview]);
 
   return (
     <div id="rotation-box-id">
       <input
         type="text"
         value={inputValue}
-        onChange={(e) => setInputValue(e.target.value)}
+  onChange={handleChange}
+  onInput={handleChange}
         className="rotation-box-input"
         inputMode="numeric"
         placeholder={placeholder}

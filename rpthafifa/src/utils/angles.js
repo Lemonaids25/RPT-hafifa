@@ -39,7 +39,7 @@ export function toRelativeDegrees(degrees, refKey, forDisplay = false) {
   if (!refKey || !(refKey in degrees)) return { ...degrees };
   const ref = degrees[refKey] ?? 0;
   const out = {};
-  for (const k of Object.keys(degrees)) {
+  for (const k of Object.keys(degrees)) {   
     const delta = degrees[k] - ref;
     out[k] = forDisplay ? normalize360(delta) : normalize180(delta);
   }
