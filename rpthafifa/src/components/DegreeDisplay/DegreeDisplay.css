@@ -1,25 +1,51 @@
 :root {
-  --degree-display-width: min(120vw, 500px);
+  /* Tie degree displays width to tank width for perfect center alignment */
+  --degree-display-width: var(--tank-component-width, clamp(10px, 10vw, 30px));
+  --text-size: var(--degree-display-text-size, 1rem);
+  --degree-box-width-height: var(5px 15px);
 }
 .degree-display-container {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 16px;
-  padding: 8px 0;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  padding: 25px 5px;
+  width: var(--degree-display-width);
+  max-width: 40%;
+  margin-inline: auto; /* center horizontally so the middle lines up with tank */
+}
+
+.degree-display-button {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+.degree-display-button:focus-visible .degree-display-box {
+  outline: 2px solid var(--pr-green, #2ecc71);
+  outline-offset: 2px;
+}
+
+.degree-display-button.active .degree-display-box {
+  box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.35);
 }
 
 .degree-display-box {
-  border-radius: 8px;
-  padding: 8px 18px;
-  min-width: 90px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  max-width: fit-content;
+  max-height: fit-content;
+  padding: 5px 15px;  
+  font-size: 1.2rem;
   text-align: center;
   font-weight: 600;
-  font-size: 1.1rem;
-  background: #eaffea;
-  border: 2px solid #2ecc40;
-  color: #2ecc40;
-  box-shadow: 0 2px 8px #2ecc4033;
+  font-size: fit-content;
+  background: #000;
+  border: 2px solid #444;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+  transition: border-color .2s ease, box-shadow .2s ease, transform .15s ease;
 }
 /*
 1. reused code need to be a diff class which will be inherited
@@ -27,23 +53,24 @@
 3. when we want to change styling of an aleardy built component - we do it for the instance of the component, and not the component itself
 */
 
-.degree-display-box.hull {
-  background: #fff5e6;
-  border: 2px solid #ff851b;
-  color: #ff851b;
-  box-shadow: 0 2px 8px #ff851b33;
-}
-
-.degree-display-box.turret {
-  background: #fff5e6;
-  border: 2px solid #ff851b;
-  color: #ff851b;
-  box-shadow: 0 2px 8px #ff851b33;
-}
-
+.degree-display-box.hull,
+.degree-display-box.turret,
 .degree-display-box.sight {
-  background: #e6f7ff;
-  border: 2px solid #0074d9;
-  color: #0074d9;
-  box-shadow: 0 2px 8px #0074d933;
+  /* Keep the unified black theme; do not override colors per part */
+  background: #000;
+  border-color: #444;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.5);
 }
+
+/* Hover/active states to make selection obvious */
+.degree-display-button:hover .degree-display-box {
+  border-color: var(--pr-green, #2ecc71);
+}
+
+.degree-display-button.active .degree-display-box {
+  border-color: var(--pr-green, #2ecc71);
+  box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.45), 0 6px 16px rgba(0,0,0,0.6);
+  transform: scale(1.04);
+}
+

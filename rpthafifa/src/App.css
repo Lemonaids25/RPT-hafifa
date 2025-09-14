@@ -1,0 +1,18 @@
+.app-layout {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+}
+
+.app-left {
+  display: flex;
+}
+
+.app-main {
+  display: flex;
+}
+
+.app-right {
+  display: flex;
+}
