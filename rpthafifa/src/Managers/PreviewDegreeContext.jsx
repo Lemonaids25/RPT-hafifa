@@ -22,6 +22,7 @@ export function PreviewDegreeProvider({ children }) {
     setPreviews(p => ({ ...p, [part]: null }));
   }, []);
 
+
   return <PreviewDegreeContext.Provider value={{
     previews,
     setPreview,
@@ -29,7 +30,20 @@ export function PreviewDegreeProvider({ children }) {
   }}>{children}</PreviewDegreeContext.Provider>;
 }
 
+// Hook for a single part
+export function usePartPreview(part) { // Extract to Context
+  const ctx = useContext(PreviewDegreeContext);
+  if (!ctx) throw new Error('usePartPreview must be used within a PreviewDegreeProvider');
+  
+  const { setPreview, clearPreview } = ctx;
+  const preview = ctx.previews[part] ?? null;
 
+  return {
+    preview,
+    setPreview: (value) => setPreview(part, value),
+    clearPreview: () => clearPreview(part),
+  };
+}
 
 // New hook to get all previews
 export function useAllPreviews() {

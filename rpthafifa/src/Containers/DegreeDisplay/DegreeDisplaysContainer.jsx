@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
-import DegreeDisplay from '../components/DegreeDisplay/DegreeDisplay';
-import { useReferencePart, useAllDegrees } from '../Managers/PartsDegreeContext';
-import { ROTATIONAL_PART_IDS, PARTS_CONFIG } from '../config/parts'; // Import from new config
+import DegreeDisplay from '../../components/DegreeDisplay/DegreeDisplay';
+import { useReferencePart, useAllDegrees } from '../../Managers/PartsDegreeContext';
+import { ROTATIONAL_PART_IDS, PARTS_CONFIG } from '../../config/parts'; // Import from new config
 
 export default function DegreeDisplaysContainer() {
   const degrees = useAllDegrees();

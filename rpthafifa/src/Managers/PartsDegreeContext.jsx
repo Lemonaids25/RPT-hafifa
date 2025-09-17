@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useMemo, useState, useCallback } from 'react';
-import { ALL_PART_IDS, PARTS_CONFIG } from '../config/parts'; // Import from new config | CR -> Remove unused comments
+import { ALL_PART_IDS, PARTS_CONFIG } from '../config/parts';
 
 const PartsDegreeContext = createContext(null);
 
@@ -9,7 +9,7 @@ const initialDegrees = ALL_PART_IDS.reduce((acc, partId) => {
   return acc;
 }, {});
 
-export function PartsDegreeProvider({children}) { // Initial twice?
+export function PartsDegreeProvider({children}) { 
   const [degrees, setDegrees] = useState({ ...initialDegrees});
   const [referencePart, setReferencePart] = useState(null);
 
@@ -35,8 +35,8 @@ export function usePartDegree(part) { // Enter Context Please
   if (!ctx) throw new Error('usePartDegree must be used within PartsDegreeProvider');
   const { getDegree, setDegree } = ctx;
   const degree = getDegree(part);
-  const onSet = useCallback((v) => setDegree(part, v), [setDegree, part]);
-  return { degree, onSet };
+  const onSetDegree = useCallback((v) => setDegree(part, v), [setDegree, part]);
+  return { degree, onSetDegree };
 }
 
 export function useAllDegrees() {
