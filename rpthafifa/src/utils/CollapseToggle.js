@@ -6,8 +6,8 @@ export default function CollapseToggle({
   expandSymbol = '‹',
   collapseSymbol = '›',
 }) {
-  const ariaLabel = collapsed ? 'Show Pitch and Roll' : 'Hide Pitch and Roll';
-  const title = collapsed ? 'Expand' : 'Collapse';
+  const ariaLabel = collapsed ? 'Show Pitch and Roll' : 'Hide Pitch and Roll'; // const - string
+  const title = collapsed ? 'Expand' : 'Collapse'; // const - string
   const symbol = collapsed ? collapseSymbol : expandSymbol;
   return (
     <button className={className} aria-label={ariaLabel} onClick={onClick} title={title}>

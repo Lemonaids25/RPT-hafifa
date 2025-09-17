@@ -1,6 +1,6 @@
 import React from 'react';
 import { usePartDegree } from '../Managers/PartsDegreeContext';
-import { usePartPreview } from '../Managers/PreviewDegreeContext';
+import { usePartPreview } from '../hooks/usePartPreview';
 import NumberSetReset from '../components/inputs/NumberSetReset';
 import { ROTATIONAL_PART_IDS, PARTS_CONFIG } from '../config/parts'; // Import from new config
 

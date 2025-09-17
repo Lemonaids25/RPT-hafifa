@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useMemo, useState, useCallback } from 'react';
-import { ALL_PART_IDS, PARTS_CONFIG } from '../config/parts'; // Import from new config
+import { ALL_PART_IDS, PARTS_CONFIG } from '../config/parts'; // Import from new config | CR -> Remove unused comments
 
 const PartsDegreeContext = createContext(null);
 
@@ -9,8 +9,8 @@ const initialDegrees = ALL_PART_IDS.reduce((acc, partId) => {
   return acc;
 }, {});
 
-export function PartsDegreeProvider({ children, initial = {} }) {
-  const [degrees, setDegrees] = useState({ ...initialDegrees, ...initial });
+export function PartsDegreeProvider({children}) { // Initial twice?
+  const [degrees, setDegrees] = useState({ ...initialDegrees});
   const [referencePart, setReferencePart] = useState(null);
 
   const getDegree = useCallback((part) => degrees[part] ?? 0, [degrees]);
@@ -21,18 +21,16 @@ export function PartsDegreeProvider({ children, initial = {} }) {
     }
   }, []);
 
-  const value = useMemo(() => ({
+  return <PartsDegreeContext.Provider value={{
     degrees, // Expose all degrees
     getDegree,
     setDegree,
     referencePart,
     setReferencePart,
-  }), [degrees, getDegree, setDegree, referencePart]);
-
-  return <PartsDegreeContext.Provider value={value}>{children}</PartsDegreeContext.Provider>;
+  }}>{children}</PartsDegreeContext.Provider>;
 }
 
-export function usePartDegree(part) {
+export function usePartDegree(part) { // Enter Context Please
   const ctx = useContext(PartsDegreeContext);
   if (!ctx) throw new Error('usePartDegree must be used within PartsDegreeProvider');
   const { getDegree, setDegree } = ctx;

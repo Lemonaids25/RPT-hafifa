@@ -7,8 +7,8 @@ import CollapseToggle from '../../utils/CollapseToggle';
 import { GAUGE_PART_IDS, PARTS_CONFIG } from '../../config/parts';
 import { classifyAngle } from '../../utils/status';
 
-function Gauge({ partId }) {
-  const { degree, onSet } = usePartDegree(partId);
+function Gauge({ partId }) { // This outside the main component, either put it inside or build a new file for it
+  const { degree, onSet } = usePartDegree(partId); // onSet what? | shouldn't be hook
   const config = PARTS_CONFIG[partId];
   const status = classifyAngle(degree);
   const item = {
@@ -19,7 +19,7 @@ function Gauge({ partId }) {
     degree: degree,
     onSet: onSet,
     status: status,
-  };
+  }; // not needed | Also item name is very generic
   return <GaugeBlock item={item} />;
 }
 

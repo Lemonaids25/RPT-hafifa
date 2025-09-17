@@ -9,5 +9,5 @@ export default function DegreeDisplay({ label, value, className = '', style = {}
       {label}<br />
       <span>{normalizedValue}°</span>
     </div>
-  ); //style will always be part of css unless it derives from a changing value
+  );
 }

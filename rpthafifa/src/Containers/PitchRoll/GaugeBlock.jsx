@@ -3,8 +3,7 @@ import PitchRollGauge from '../../components/PitchRoll/PitchRollGauge';
 import NumberSetReset from '../../components/inputs/NumberSetReset';
 import DegreeDisplay from '../../components/DegreeDisplay/DegreeDisplay';
 
-export default function GaugeBlock({ item }) {
-  const { label, alt, img, degree, status, onSet, onReset } = item;
+export default function GaugeBlock({ label, alt, img, degree, status, onSet, onReset }) {
   return (
     <div className="gauge-block">
       <DegreeDisplay label={''} value={degree} className={`gauge-degree ${status}`} />

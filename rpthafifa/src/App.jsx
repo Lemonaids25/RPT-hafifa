@@ -12,7 +12,8 @@ function App() {
     <PartsDegreeProvider>
       <PreviewDegreeProvider>
       <div className="app-layout">
-        <div className="app-left">
+        <div className="app-left"> 
+          {/* ClassName -> App-left? -> ID | pitch-roll-container */}
           <PitchRollContainer />
         </div>
         <div className="app-main">
