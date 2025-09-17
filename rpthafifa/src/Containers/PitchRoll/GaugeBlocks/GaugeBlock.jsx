@@ -2,12 +2,12 @@ import React from 'react';
 import PitchRollGauge from '../../../components/PitchRoll/PitchRollGauge';
 import NumberSetReset from '../../../components/inputs/NumberSetReset';
 import DegreeDisplay from '../../../components/DegreeDisplay/DegreeDisplay';
-import { usePartDegree } from '../../../Managers/PartsDegreeContext';
+import { usePartDegree } from '../../../context/PartsDegreeContext';
 import { PARTS_CONFIG } from '../../../config/parts';
 import { classifyAngle } from '../../../utils/status';
 
 export default function GaugeBlock({ partId, onReset }) {
-  const { degree, onSetDegree } = usePartDegree(partId);
+  const { degree, onSet: onSetDegree } = usePartDegree(partId);
   const config = PARTS_CONFIG[partId];
   const status = classifyAngle(degree);
 // onSet what? | shouldn't be hook

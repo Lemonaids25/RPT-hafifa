@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import TankComponent from '../../../components/TankComponents/TankComponent';
-import { useAllDegrees, useReferencePart } from '../../../Managers/PartsDegreeContext';
-import { useAllPreviews } from '../../../Managers/PreviewDegreeContext'; // Assuming a new useAllPreviews hook
+import { useAllDegrees, useReferencePart } from '../../../context/PartsDegreeContext';
+import { useAllPreviews } from '../../../context/PreviewDegreeContext'; // Assuming a new useAllPreviews hook
 import { normalize180 } from '../../../utils/angles';
 import { ROTATIONAL_PART_IDS, PARTS_CONFIG } from '../../../config/parts';
 import './PreviewTank.css';
@@ -9,7 +9,7 @@ import './PreviewTank.css';
 export default function PreviewDegreeContainer() {
   const { referencePart } = useReferencePart();
   const allDegrees = useAllDegrees();
-  const allPreviews = useAllPreviews(); // This would get all preview values
+  const { collection: allPreviews } = useAllPreviews(); // This would get all preview values
 
   const referenceAngle = referencePart ? allDegrees[referencePart] ?? 0 : 0;
 

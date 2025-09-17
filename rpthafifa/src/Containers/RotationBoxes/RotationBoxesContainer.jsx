@@ -1,12 +1,12 @@
 import React from 'react';
-import { usePartDegree } from '../../Managers/PartsDegreeContext';
-import { usePartPreview } from '../../Managers/PreviewDegreeContext';
+import { usePartDegree } from '../../context/PartsDegreeContext';
+import { usePreview } from '../../context/PreviewDegreeContext';
 import NumberSetReset from '../../components/inputs/NumberSetReset';
 import { ROTATIONAL_PART_IDS, PARTS_CONFIG } from '../../config/parts'; // Import from new config
 
 function RotationRow({ partId }) {
-  const { onSetDegree } = usePartDegree(partId);
-  const { setPreview, clearPreview } = usePartPreview(partId);
+  const { onSet: onSetDegree } = usePartDegree(partId);
+  const { set: setPreview, remove: clearPreview } = usePreview(partId);
   const { label } = PARTS_CONFIG[partId];
   return (
     <NumberSetReset placeholder={`${label} Rotation`} onSetDegree={onSetDegree} onPreview={setPreview} onPreviewClear={clearPreview} />

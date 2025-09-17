@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import TankComponent from '../../components/TankComponents/TankComponent';
-import { useAllDegrees, useReferencePart } from '../../Managers/PartsDegreeContext';
+import { useAllDegrees, useReferencePart } from '../../context/PartsDegreeContext';
 import { toRelativeDegrees, compassDegreeRelative } from '../../utils/angles';
 import PreviewDegreeContainer from './TankPreview/PreviewDegreeContainer';
 import { ROTATIONAL_PART_IDS, PARTS_CONFIG, COMPASS_CONFIG } from '../../config/parts';
