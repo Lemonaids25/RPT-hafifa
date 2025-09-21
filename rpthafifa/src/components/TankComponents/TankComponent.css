@@ -1,7 +1,7 @@
 :root {
   --tank-component-top: clamp(100px, 10vh, 120px);
   --tank-component-width: clamp(230px, 60vw, 500px);
-  --tank-transition: 0.3s;
+  --tank-transition: 0.8s;
 }
 .tank-stack {
   display: flex;

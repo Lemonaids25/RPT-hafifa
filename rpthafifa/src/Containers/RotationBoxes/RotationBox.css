@@ -19,7 +19,7 @@
   --button-last-child-shadow: 0 2px 6px 0 #2ecc4033;
 }
 
-#rotation-boxes-container {
+.rotation-boxes-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -31,14 +31,14 @@
   width: fit-content;
 }
 
-#rotation-box-id {
+.rotation-box-id {
   display: flex;
   align-items: center;
-  justify-content: cent er;
+  justify-content: center;
   gap: 8px;
 }
 
-#rotation-box-id .rotation-box-input {
+.rotation-box-id .rotation-box-input {
   width: var(--input-width);
   color: var(--input-text-color);
   padding: var(--input-padding);
@@ -50,11 +50,11 @@
   transition: border 0.2s;
 }
 
-#rotation-box-id .rotation-box-input:focus {
+.rotation-box-id .rotation-box-input:focus {
   border-color: var(--input-focus-border-color);
 }
 
-#rotation-box-id .rotation-box-button {
+.rotation-box-id .rotation-box-button {
   height: var(--button-height);
   color: var(--button-text-color);
   border: none;
@@ -66,7 +66,7 @@
   transition: background 0.2s;
 }
 
-#rotation-box-id .rotation-box-button:last-child {
+.rotation-box-id .rotation-box-button:last-child {
   background: var(--button-last-child-background);
   box-shadow: var(--button-last-child-shadow);
 }

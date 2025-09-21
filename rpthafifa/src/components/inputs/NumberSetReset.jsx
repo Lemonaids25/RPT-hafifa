@@ -24,7 +24,7 @@ export default function NumberSetReset({ onSetDegree, onPreview, onPreviewClear,
   }, [parse, onPreview]);
 
   return (
-    <div id="rotation-box-id">
+    <div className="rotation-box-id">
       <input
         type="text"
         value={inputValue}

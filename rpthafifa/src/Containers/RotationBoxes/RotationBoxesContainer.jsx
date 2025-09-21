@@ -15,7 +15,7 @@ function RotationRow({ partId }) {
 
 export default function RotationBoxesContainer() {
   return (
-    <div id="rotation-boxes-container">
+    <div className="rotation-boxes-container">
       {ROTATIONAL_PART_IDS.map((partId) => (
         <RotationRow key={partId} partId={partId} />
       ))}

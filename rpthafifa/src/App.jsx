@@ -12,15 +12,15 @@ function App() {
     <PartsDegreeProvider>
       <PreviewDegreeProvider>
       <div className="app-layout">
-        <div className="app-left"> 
+        <div className="pitch-roll-container"> 
           {/* ClassName -> App-left? -> ID | pitch-roll-container */}
           <PitchRollContainer />
         </div>
-        <div className="app-main">
+        <div className="tank-container">
           <DegreeDisplaysContainer />
           <TankContainer />
         </div>
-        <div className="app-right">
+        <div className="inputs-container">
           <RotationBoxesContainer />
         </div>
       </div>
