@@ -1,0 +1,66 @@
+.threats-component {
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
+
+}
+
+.threats-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.threat-input {
+  display: flex;
+  text-align: center;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.add-threat-button {
+  padding: 0.75rem;
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-threat-button:hover {
+  background-color: #357abd;
+}
+
+.threat-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.threat-list-header, .threat-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+  padding: 0.75rem;
+  text-align: center;
+}
+
+.threat-list-header {
+  gap: 2rem;
+  font-weight: bold;
+  background-color: #222;
+}
+
+.threat-item {
+  background-color: #222;
+  color: red;
+  font: bold;
+  font-size: 1.1rem;
+  font-weight: 800;
+  outline: red solid 2px;
+}
+

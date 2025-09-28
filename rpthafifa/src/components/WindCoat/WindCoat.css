@@ -1,0 +1,21 @@
+.wind-coat-lever {
+  display: flex;
+  flex-direction: column;
+  gap: var(--padding-base);
+  padding: var(--padding-base);
+  background-color: var(--app-bg);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.lever-position {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.lever-position label {
+  font-weight: 500;
+  color: var(--text-color);
+}
+  

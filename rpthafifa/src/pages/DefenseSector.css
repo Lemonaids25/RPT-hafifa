@@ -1,0 +1,30 @@
+.defense-sector-page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  padding: var(--padding-base);
+  gap: var(--padding-base);
+}
+
+.defense-sector-layout {
+  display: flex;
+  flex-grow: 1;
+  gap: var(--padding-base);
+}
+
+.left-panel, .right-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.right-panel {
+    align-content: flex-end;
+  display: flex;
+  flex-wrap: wrap;
+}
+  
+  
