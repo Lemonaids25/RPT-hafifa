@@ -4,14 +4,17 @@
   --text-size: var(--degree-display-text-size, 1rem);
   --degree-box-width-height: var(5px 15px);
 }
+
 .degree-display-container {
   display: flex;
   justify-content: space-evenly;
   align-items: flex-start;
-  padding: 25px 5px;
+  padding: var(--spacing-lg) var(--spacing-xs);
   width: var(--degree-display-width);
   max-width: 40%;
-  margin-inline: auto; /* center horizontally so the middle lines up with tank */
+  margin-inline: auto;
+  position: relative;
+  z-index: var(--z-index-dropdown);
 }
 
 .degree-display-button {
@@ -19,10 +22,13 @@
   border: 0;
   padding: 0;
   cursor: pointer;
+  position: relative;
+  z-index: var(--z-index-dropdown);
+  transition: transform var(--transition-fast);
 }
 
 .degree-display-button:focus-visible .degree-display-box {
-  outline: 2px solid var(--pr-green, #2ecc71);
+  outline: 2px solid var(--color-success);
   outline-offset: 2px;
 }
 
@@ -33,44 +39,39 @@
 .degree-display-box {
   display: flex;
   flex-direction: column;
-  border-radius: 12px;
+  border-radius: var(--border-radius-xl);
   max-width: fit-content;
   max-height: fit-content;
-  padding: 5px 15px;  
+  padding: var(--spacing-xs) var(--spacing-md);  
   font-size: 1.2rem;
   text-align: center;
   font-weight: 600;
-  font-size: fit-content;
   background: #000;
   border: 2px solid #444;
-  color: #fff;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.5);
-  transition: border-color .2s ease, box-shadow .2s ease, transform .15s ease;
+  color: var(--color-text-primary);
+  box-shadow: var(--shadow-md);
+  transition: border-color var(--transition-base), 
+              box-shadow var(--transition-base), 
+              transform var(--transition-fast);
+  pointer-events: auto;
 }
-/*
-1. reused code need to be a diff class which will be inherited
-2. we only use position based placing when the design is irregular - we always preffer flexboxes
-3. when we want to change styling of an aleardy built component - we do it for the instance of the component, and not the component itself
-*/
 
 .degree-display-box.hull,
 .degree-display-box.turret,
 .degree-display-box.sight {
-  /* Keep the unified black theme; do not override colors per part */
   background: #000;
   border-color: #444;
-  color: #fff;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+  color: var(--color-text-primary);
+  box-shadow: var(--shadow-md);
 }
 
-/* Hover/active states to make selection obvious */
 .degree-display-button:hover .degree-display-box {
-  border-color: var(--pr-green, #2ecc71);
+  border-color: var(--color-success);
+  transform: translateY(-2px);
 }
 
 .degree-display-button.active .degree-display-box {
-  border-color: var(--pr-green, #2ecc71);
-  box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.45), 0 6px 16px rgba(0,0,0,0.6);
+  border-color: var(--color-success);
+  box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.45), var(--shadow-xl);
   transform: scale(1.04);
 }
-

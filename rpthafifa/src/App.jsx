@@ -1,6 +1,6 @@
 import React from 'react';
-import { PartsDegreeProvider } from './Managers/PartsDegreeContext.jsx';
-import { PreviewDegreeProvider } from './Managers/PreviewDegreeContext.jsx';
+import { PartsDegreeProvider } from './contexts/PartsDegreeContext.jsx';
+import { PreviewDegreeProvider } from './contexts/PreviewDegreeContext.jsx';
 import RotationBoxesContainer from './Containers/RotationBoxesContainer.jsx';
 import DegreeDisplaysContainer from './Containers/DegreeDisplaysContainer.jsx';
 import TankContainer from './Containers/TankContainer.jsx';

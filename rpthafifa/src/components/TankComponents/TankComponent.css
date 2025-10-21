@@ -11,6 +11,8 @@
   justify-content: flex-end;
   width: 100%;
   height: 100%;
+  position: relative;
+  z-index: 0; /* Keep tank stack below interactive elements */
 }
 
 /* Shared styles for all tank images */ 

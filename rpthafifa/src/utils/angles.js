@@ -1,55 +1,82 @@
+/**
+ * Utility functions for angle calculations and normalization
+ */
 
-export function normalize360(v) {
-  const n = Number(v) || 0;
-  return ((n % 360) + 360) % 360;
+import { ANGLE_CONSTANTS } from '../config/constants';
+
+/**
+ * Normalize angle to range [0, 360)
+ * @param {number} deg - Angle in degrees
+ * @returns {number} Normalized angle
+ */
+export function normalize360(deg) {
+  const normalized = deg % ANGLE_CONSTANTS.FULL_ROTATION;
+  return normalized < 0 ? normalized + ANGLE_CONSTANTS.FULL_ROTATION : normalized;
 }
 
-export function normalize180(v) {
-  const n = normalize360(v);
-  return n > 180 ? n - 360 : n;
+/**
+ * Normalize angle to range [0, 360) and round to nearest integer
+ * @param {number} deg - Angle in degrees
+ * @returns {number} Normalized and rounded angle
+ */
+export function normalize360Rounded(deg) {
+  return Math.round(normalize360(deg));
 }
 
-export function shortestDelta(from, to) {
-  const a = normalize360(from);
-  const b = normalize360(to);
-  let d = b - a;
-  if (d > 180) d -= 360;
-  if (d < -180) d += 360;
-  return d;
+/**
+ * Normalize angle to range [-180, 180)
+ * @param {number} deg - Angle in degrees
+ * @returns {number} Normalized angle
+ */
+export function normalize180(deg) {
+  let normalized = deg % ANGLE_CONSTANTS.FULL_ROTATION;
+  if (normalized >= ANGLE_CONSTANTS.HALF_ROTATION) normalized -= ANGLE_CONSTANTS.FULL_ROTATION;
+  if (normalized < -ANGLE_CONSTANTS.HALF_ROTATION) normalized += ANGLE_CONSTANTS.FULL_ROTATION;
+  return normalized;
 }
 
-export function coerceDegree(value, fallback = 0) {
-  return Number.isFinite(value) ? value : fallback;
-}
-
+/**
+ * Calculate the shortest angular path from current to target angle
+ * @param {number} current - Current angle
+ * @param {number} target - Target angle
+ * @returns {number} Shortest angle to reach target
+ */
 export function nextAngleShortest(current, target) {
-  const t = coerceDegree(target, 0);
-  return current + shortestDelta(current, t);
+  const diff = normalize180(target - current);
+  return current + diff;
 }
 
-
-export function normalize360Rounded(v) {
-  return Math.round(normalize360(v));
-}
-
-// Compute a map of relative degrees given an absolute degree map and a reference key
-// degrees: Record<string, number>, refKey: string|null
-// returns: Record<string, number> where ref is 0 and others are normalized to [-180,180] for logic or [0,360) for display
-export function toRelativeDegrees(degrees, refKey, forDisplay = false) {
-  if (!refKey || !(refKey in degrees)) return { ...degrees };
-  const ref = degrees[refKey] ?? 0;
-  const out = {};
-  for (const k of Object.keys(degrees)) {   
-    const delta = degrees[k] - ref;
-    out[k] = forDisplay ? normalize360(delta) : normalize180(delta);
+/**
+ * Convert absolute degrees to relative degrees based on reference part
+ * @param {Object} absoluteDegrees - Object mapping part names to absolute degrees
+ * @param {string|null} referencePart - The reference part name (or null for absolute)
+ * @param {boolean} normalize - Whether to normalize the result
+ * @returns {Object} Object mapping part names to relative degrees
+ */
+export function toRelativeDegrees(absoluteDegrees, referencePart, normalize = true) {
+  if (!referencePart) return absoluteDegrees;
+  
+  const refDegree = absoluteDegrees[referencePart] ?? 0;
+  const result = {};
+  
+  for (const [part, degree] of Object.entries(absoluteDegrees)) {
+    const relativeDeg = degree - refDegree;
+    result[part] = normalize ? normalize180(relativeDeg) : relativeDeg;
   }
-  return out;
+  
+  return result;
 }
 
-// Compute the compass rotation so that the selected reference part appears at 0
-// absDegrees: Record<string, number>, refKey: string|null, base: number (default 90)
-export function compassDegreeRelative(absDegrees, refKey, base = 90) {
-  if (!refKey) return base;
-  const refAbs = (absDegrees && refKey in absDegrees) ? absDegrees[refKey] : 0;
-  return base - refAbs;
+/**
+ * Calculate compass degree relative to reference part
+ * @param {Object} absoluteDegrees - Object mapping part names to absolute degrees
+ * @param {string|null} referencePart - The reference part name
+ * @param {number} offset - Offset to apply (default: COMPASS_NORTH_OFFSET for North alignment)
+ * @returns {number} Compass degree
+ */
+export function compassDegreeRelative(absoluteDegrees, referencePart, offset = ANGLE_CONSTANTS.COMPASS_NORTH_OFFSET) {
+  if (!referencePart) return offset;
+  
+  const refDegree = absoluteDegrees[referencePart] ?? 0;
+  return normalize360(offset - refDegree);
 }

@@ -1,4 +1,82 @@
+/**
+ * Global CSS Variables and Root Styles
+ * Centralized design tokens for consistent theming
+ */
 
+:root {
+  /* Color Palette */
+  --color-primary: #007bff;
+  --color-primary-hover: #0056b3;
+  --color-success: #28a745;
+  --color-warning: #ffc107;
+  --color-danger: #dc3545;
+  --color-info: #17a2b8;
+  
+  /* Status Colors (Gauge) */
+  --color-status-green: #28a745;
+  --color-status-orange: #ffc107;
+  --color-status-red: #dc3545;
+  
+  /* Background Colors */
+  --color-bg-primary: #4B5320;  /* Army green */
+  --color-bg-secondary: #3a4019;
+  --color-bg-tertiary: #2a3012;
+  
+  /* Text Colors */
+  --color-text-primary: #f2f2f2;
+  --color-text-secondary: #cccccc;
+  --color-text-muted: #999999;
+  --color-text-dark: #333333;
+  
+  /* Border Colors */
+  --color-border-light: rgba(255, 255, 255, 0.1);
+  --color-border-medium: rgba(255, 255, 255, 0.2);
+  --color-border-dark: rgba(0, 0, 0, 0.2);
+  
+  /* Spacing Scale */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
+  
+  /* Font Sizes */
+  --font-size-xs: 0.75rem;   /* 12px */
+  --font-size-sm: 0.875rem;  /* 14px */
+  --font-size-base: 1rem;    /* 16px */
+  --font-size-lg: 1.125rem;  /* 18px */
+  --font-size-xl: 1.25rem;   /* 20px */
+  --font-size-2xl: 1.5rem;   /* 24px */
+  
+  /* Z-index Layers */
+  --z-index-base: 1;
+  --z-index-dropdown: 10;
+  --z-index-sticky: 20;
+  --z-index-fixed: 30;
+  --z-index-modal-backdrop: 40;
+  --z-index-modal: 50;
+  --z-index-popover: 60;
+  --z-index-tooltip: 70;
+  
+  /* Border Radius */
+  --border-radius-sm: 2px;
+  --border-radius-md: 4px;
+  --border-radius-lg: 8px;
+  --border-radius-xl: 12px;
+  --border-radius-round: 50%;
+  
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.2s ease;
+  --transition-slow: 0.3s ease;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 4px 8px rgba(0, 0, 0, 0.2);
+  --shadow-xl: 0 8px 16px rgba(0, 0, 0, 0.25);
+}
 
 html, body, #root {
 	height: 100%;
@@ -6,8 +84,7 @@ html, body, #root {
 
 body {
 	margin: 0;
-	background-color: #4B5320; /* army green */
-	color: #f2f2f2; /* optional: light text for contrast */
+	background-color: var(--color-bg-primary);
+	color: var(--color-text-primary);
 	font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 }
-

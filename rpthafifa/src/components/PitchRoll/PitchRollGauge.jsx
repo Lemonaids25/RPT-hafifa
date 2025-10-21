@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
+import './PitchRollGauge.css';
 import { nextAngleShortest } from '../../utils/angles';
 
-export default function PitchRollGauge({ src, degree = 0, alt = 'Gauge', className = '' }) {
+/**
+ * A gauge component that displays pitch/roll with smooth rotation animation
+ */
+export default function PitchRollGauge({ src, degree = 0, alt = "Gauge", className = "" }) {
   const [renderAngle, setRenderAngle] = useState(0);
 
   useEffect(() => {
@@ -18,3 +23,10 @@ export default function PitchRollGauge({ src, degree = 0, alt = 'Gauge', classNa
     />
   );
 }
+
+PitchRollGauge.propTypes = {
+  src: PropTypes.string.isRequired,
+  degree: PropTypes.number,
+  alt: PropTypes.string,
+  className: PropTypes.string
+};

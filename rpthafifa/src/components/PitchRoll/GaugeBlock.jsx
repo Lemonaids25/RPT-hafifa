@@ -1,7 +1,8 @@
 import React from 'react';
-import PitchRollGauge from '../components/PitchRoll/PitchRollGauge';
-import NumberSetReset from '../components/inputs/NumberSetReset';
-import DegreeDisplay from '../components/DegreeDisplay/DegreeDisplay';
+import PropTypes from 'prop-types';
+import PitchRollGauge from './PitchRollGauge';
+import NumberSetReset from '../inputs/NumberSetReset';
+import DegreeDisplay from '../DegreeDisplay/DegreeDisplay';
 
 export default function GaugeBlock({ item }) {
   const { label, alt, src, degree, status, onSet, onReset } = item;
@@ -16,3 +17,15 @@ export default function GaugeBlock({ item }) {
     </div>
   );
 }
+
+GaugeBlock.propTypes = {
+  item: PropTypes.shape({
+    label: PropTypes.string.isRequired,
+    alt: PropTypes.string.isRequired,
+    src: PropTypes.string.isRequired,
+    degree: PropTypes.number.isRequired,
+    status: PropTypes.oneOf(['green', 'orange', 'red']).isRequired,
+    onSet: PropTypes.func.isRequired,
+    onReset: PropTypes.func
+  }).isRequired
+};

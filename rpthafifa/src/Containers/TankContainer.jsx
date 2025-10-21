@@ -1,58 +1,45 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import TankComponent from '../components/TankComponents/TankComponent';
-import { usePartDegree, useReferencePart } from '../Managers/PartsDegreeContext';
-import '../components/TankComponents/TankComponent.css';
-import tankHullPng from '../assets/tank-hull.png';
-import tankTurretPng from '../assets/tank-turret.png';
-import commanderSight from '../assets/commander-sight.png';
-import compassPng from '../assets/360-degrees.png';
-import { toRelativeDegrees, compassDegreeRelative } from '../utils/angles';
 import PreviewDegreeContainer from './PreviewDegreeContainer';
+import { useRelativeDegrees } from '../hooks/useRelativeDegrees';
+import { TANK_COMPONENTS } from '../config/parts';
+import { PART_IDS } from '../config/constants';
+import compassPng from '../assets/360-degrees.png';
+import '../components/TankComponents/TankComponent.css';
 
 export default function TankContainer() {
-  const hull = usePartDegree('Hull');
-  const turret = usePartDegree('Turret');
-  const sight = usePartDegree('Commander Sight');
-  const { referencePart } = useReferencePart();
-
-  const abs = useMemo(() => ({ Hull: hull.degree, Turret: turret.degree, 'Commander Sight': sight.degree }), [hull.degree, turret.degree, sight.degree]);
-  const rel = useMemo(() => toRelativeDegrees(abs, referencePart, false), [abs, referencePart]);
-  const compassDegree = useMemo(() => compassDegreeRelative(abs, referencePart, 90), [abs, referencePart]);
+  const { compassDegree, getDegree } = useRelativeDegrees();
 
   return (
-    <div id="tank-container">
+    <div className="tank-container">
       <div className="tank-stack">
-        {/* Compass (static overlay) */}
         <TankComponent
-          key={'Compass'}
+          key="Compass"
           src={compassPng}
           degree={compassDegree}
-          alt={'Compass'}       
-          className={'compass-style'}
+          alt="Compass"       
+          className="compass-style"
         />
 
         <TankComponent
-          key={'Hull'}
-          src={tankHullPng}
-          degree={referencePart ? rel['Hull'] : hull.degree}
-          alt={'Hull Rotation'}
-          className={'tank-hull-style'}
+          key={PART_IDS.HULL}
+          src={TANK_COMPONENTS[0].src}
+          degree={getDegree(PART_IDS.HULL)}
+          alt={TANK_COMPONENTS[0].alt}
+          className={TANK_COMPONENTS[0].className}
         />
-  <PreviewDegreeContainer />
-        <TankComponent
-          key={'Turret'}
-          src={tankTurretPng}
-          degree={referencePart ? rel['Turret'] : turret.degree}
-          alt={'Turret Rotation'}
-          className={'tank-turret-style'}
-        />
-        <TankComponent
-          key={'Commander Sight'}
-          src={commanderSight}
-          degree={referencePart ? rel['Commander Sight'] : sight.degree}
-          alt={'Commander Sight Rotation'}
-          className={'commander-sight-style'}
-        />
+        
+        <PreviewDegreeContainer />
+        
+        {TANK_COMPONENTS.slice(1).map((component) => (
+          <TankComponent
+            key={component.id}
+            src={component.src}
+            degree={getDegree(component.id)}
+            alt={component.alt}
+            className={component.className}
+          />
+        ))}
       </div>
     </div>
   );

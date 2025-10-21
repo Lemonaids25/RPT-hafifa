@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from 'react';
+import PropTypes from 'prop-types';
 import '../inputs/RotationBox.css';
 
 export default function NumberSetReset({ onSet, onPreview, onPreviewClear, placeholder = 'Value', min, max, step = 1, validate }) {
@@ -21,7 +22,7 @@ export default function NumberSetReset({ onSet, onPreview, onPreviewClear, place
     onSet(v ?? 0);
     setInputValue('');
     if (onPreviewClear) onPreviewClear();
-  }, [inputValue, onSet, parse]);
+  }, [inputValue, onSet, parse, onPreviewClear]);
 
   const handleChange = useCallback((e) => {
     const val = e.target.value;
@@ -30,12 +31,11 @@ export default function NumberSetReset({ onSet, onPreview, onPreviewClear, place
   }, [parse, onPreview]);
 
   return (
-    <div id="rotation-box-id">
+    <div className="rotation-box">
       <input
         type="text"
         value={inputValue}
-  onChange={handleChange}
-  onInput={handleChange}
+        onChange={handleChange}
         className="rotation-box-input"
         inputMode="numeric"
         placeholder={placeholder}
@@ -45,3 +45,14 @@ export default function NumberSetReset({ onSet, onPreview, onPreviewClear, place
     </div>
   );
 }
+
+NumberSetReset.propTypes = {
+  onSet: PropTypes.func.isRequired,
+  onPreview: PropTypes.func,
+  onPreviewClear: PropTypes.func,
+  placeholder: PropTypes.string,
+  min: PropTypes.number,
+  max: PropTypes.number,
+  step: PropTypes.number,
+  validate: PropTypes.func
+};

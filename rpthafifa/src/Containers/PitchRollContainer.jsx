@@ -1,16 +1,16 @@
 import React, { useState, useCallback, useMemo } from 'react';
-import { usePartDegree } from '../Managers/PartsDegreeContext';
-import GaugeBlock from './GaugeBlock';
+import { usePartDegree } from '../contexts/PartsDegreeContext';
+import GaugeBlock from '../components/PitchRoll/GaugeBlock';
+import { GAUGES, buildItems, buildStateById } from '../components/PitchRoll/const';
+import { PART_IDS } from '../config/constants';
+import CollapseToggle from '../utils/CollapseToggle';
 import '../components/PitchRoll/PitchRollPanel.css';
 import '../components/PitchRoll/PitchRollGauge.css';
-import CollapseToggle from '../utils/CollapseToggle';
-import { GAUGES, buildItems, buildStateById } from '../components/PitchRoll/const';
-
 
 export default function PitchRollContainer() {
   const [collapsed, setCollapsed] = useState(false);
-  const pitch = usePartDegree('Pitch');
-  const roll = usePartDegree('Roll');
+  const pitch = usePartDegree(PART_IDS.PITCH);
+  const roll = usePartDegree(PART_IDS.ROLL);
   const toggle = useCallback(() => setCollapsed((v) => !v), []);
 
   const stateById = useMemo(() => buildStateById(pitch, roll), [pitch, roll]);
