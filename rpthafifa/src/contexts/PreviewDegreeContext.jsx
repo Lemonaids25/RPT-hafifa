@@ -3,7 +3,7 @@ import React, { createContext, useCallback, useContext, useMemo, useState } from
 const PreviewDegreeContext = createContext(null);
 
 export function PreviewDegreeProvider({ children }) {
-  const [preview, setPreview] = useState({}); // { [part]: number }
+  const [preview, setPreview] = useState({});
 
   const setPreviewDegree = useCallback((part, val) => {
     setPreview((p) => {

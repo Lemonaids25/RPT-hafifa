@@ -3,9 +3,6 @@ import tankHullPng from '../assets/tank-hull.png';
 import tankTurretPng from '../assets/tank-turret.png';
 import commanderSightPng from '../assets/commander-sight.png';
 
-/**
- * Configuration for tank parts that can be rotated
- */
 export const ROTATION_PARTS = [
   {
     id: PART_IDS.HULL,
@@ -27,9 +24,6 @@ export const ROTATION_PARTS = [
   }
 ];
 
-/**
- * Configuration for tank visual components
- */
 export const TANK_COMPONENTS = [
   {
     id: PART_IDS.HULL,
@@ -51,20 +45,10 @@ export const TANK_COMPONENTS = [
   }
 ];
 
-/**
- * Get part configuration by ID
- * @param {string} partId - The part ID
- * @returns {Object|undefined} Part configuration object
- */
 export function getPartById(partId) {
   return ROTATION_PARTS.find(part => part.id === partId);
 }
 
-/**
- * Get tank component configuration by ID
- * @param {string} partId - The part ID
- * @returns {Object|undefined} Tank component configuration object
- */
 export function getTankComponentById(partId) {
   return TANK_COMPONENTS.find(comp => comp.id === partId);
 }

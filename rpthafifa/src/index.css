@@ -1,14 +1,8 @@
-/**
- * Global CSS Variables and Root Styles
- */
-
 :root {
-  /* Colors - Only keeping what's used */
-  --color-bg-primary: #4B5320;  /* Army green background */
+  --color-bg-primary: #4B5320;
   --color-text-primary: #f2f2f2;
   --color-success: #28a745;
   
-  /* Spacing Scale */
   --spacing-xs: 4px;
   --spacing-sm: 8px;
   --spacing-md: 16px;
@@ -16,17 +10,13 @@
   --spacing-xl: 32px;
   --spacing-2xl: 48px;
   
-  /* Z-index Layers */
   --z-index-dropdown: 10;
   
-  /* Border Radius */
   --border-radius-xl: 12px;
   
-  /* Transitions */
   --transition-fast: 0.15s ease;
   --transition-base: 0.2s ease;
   
-  /* Shadows */
   --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.15);
   --shadow-xl: 0 8px 16px rgba(0, 0, 0, 0.25);
 }
@@ -36,6 +26,7 @@ html, body, #root {
 	width: 100%;
 	margin: 0;
 	padding: 0;
+	overflow: hidden;
 }
 
 body {

@@ -11,7 +11,6 @@ export default function TankContainer() {
   const { compassDegree, getDegree } = useRelativeDegrees();
 
   return (
-    <div className="tank-container">
       <div className="tank-stack">
         <TankComponent
           key="Compass"
@@ -41,6 +40,5 @@ export default function TankContainer() {
           />
         ))}
       </div>
-    </div>
   );
 }

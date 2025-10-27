@@ -5,7 +5,7 @@ import { PreviewDegreeProvider } from './contexts/PreviewDegreeContext.jsx';
 import RotationBoxesContainer from './Containers/RotationBoxesContainer.jsx';
 import DegreeDisplaysContainer from './Containers/DegreeDisplaysContainer.jsx';
 import TankContainer from './Containers/TankContainer.jsx';
-import PitchRollContainer from './Containers/PitchRollContainer.jsx';
+import PitchRollContainer from './Containers/PitchRollContainer/PitchRollContainer.jsx';
 import './index.css';
 import './App.css';
 

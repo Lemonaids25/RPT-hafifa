@@ -1,7 +1,3 @@
-/**
- * Central export point for all context providers and hooks
- */
-
 export {
   PartsDegreeProvider,
   usePartDegree,

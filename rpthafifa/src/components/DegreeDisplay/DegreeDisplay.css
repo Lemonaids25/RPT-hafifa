@@ -1,13 +1,10 @@
-:root {
-  /* Tie degree displays width to tank width for perfect center alignment */
-  --degree-display-width: var(--tank-component-width, clamp(10px, 10vw, 30px));
-  --text-size: var(--degree-display-text-size, 1rem);
-  --degree-box-width-height: var(5px 15px);
-}
-
 .degree-display-container {
+  --degree-display-width: var(clamp(230px, 60vw, 500px));
+  --text-size: var(1rem);
+  --degree-box-width-height: var(5px 15px);
+  
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: flex-start;
   padding: var(--spacing-lg) var(--spacing-xs);
   width: var(--degree-display-width);

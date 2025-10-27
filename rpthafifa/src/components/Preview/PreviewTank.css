@@ -1,4 +1,3 @@
-/* Preview-specific image styles; inherit tank positioning via shared classes */
 .tank-preview {
   opacity: 0.8;
   filter: saturate(1.5) hue-rotate(120deg) brightness(1.05);

@@ -1,8 +1,3 @@
-/**
- * Centralized constants for the application
- */
-
-// Part ID constants for type safety and consistency
 export const PART_IDS = {
   HULL: 'Hull',
   TURRET: 'Turret',
@@ -11,7 +6,6 @@ export const PART_IDS = {
   ROLL: 'Roll'
 };
 
-// All parts in the system
 export const ALL_PARTS = [
   PART_IDS.HULL,
   PART_IDS.TURRET,
@@ -20,7 +14,6 @@ export const ALL_PARTS = [
   PART_IDS.ROLL
 ];
 
-// Initial degree values for all parts
 export const INITIAL_DEGREES = {
   [PART_IDS.HULL]: 0,
   [PART_IDS.TURRET]: 0,
@@ -29,9 +22,18 @@ export const INITIAL_DEGREES = {
   [PART_IDS.ROLL]: 0
 };
 
-// Angle constants for calculations
 export const ANGLE_CONSTANTS = {
-  COMPASS_NORTH_OFFSET: 90,  // Offset to align compass to North
-  FULL_ROTATION: 360,         // Degrees in a full circle
-  HALF_ROTATION: 180          // Degrees in a half circle
+  COMPASS_NORTH_OFFSET: 90,
+  FULL_ROTATION: 360,
+  HALF_ROTATION: 180
+};
+
+export const STATUS = {
+  GREEN: 'green',
+  ORANGE: 'orange',
+  RED: 'red'
+};
+
+export const STATUS_LABEL = {
+  CRITICAL: 'CRITICAL'
 };

@@ -2,15 +2,20 @@
   display: flex;
   justify-content: space-between;
 }
-
+.container{
+  display: flex;
+}
 .pitch-roll-container {
   display: flex;
 }
-
 .main-tank-display-container {
   display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
-
 .input-controls-container {
   display: flex;
 }
+
+/* I would set all containers to flex as a generic item */

@@ -1,25 +1,21 @@
-:root {
-  /* Rotation Box sizing variables */
-  --rotation-box-input-width: 150px;
-  --rotation-box-input-height: 25px;
-  --rotation-box-input-padding: 6px 8px;
-  --rotation-box-input-font-size: 1rem;
-  --rotation-box-button-height: 40px;
-  --rotation-box-button-padding: 1px 14px;
-  --rotation-box-gap: 8px;
-  --rotation-boxes-container-gap: 12px;
-}
-
 .rotation-boxes-container {
+  --rotation-box-input-width: 70%;
+  --rotation-box-input-height: 70%;
+  --rotation-box-input-padding: 4% 5%;
+  --rotation-box-input-font-size: 1rem;
+  --rotation-box-button-height: 100%;
+  --rotation-box-button-padding: 5% 5%;
+  --rotation-box-gap: 2%;
+  --rotation-boxes-container-gap: 12px;
+  
   display: flex;
-  flex-direction: column; /* stack boxes one on top of the other */
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: var(--rotation-boxes-container-gap);
-  /* participate in bottom row flow; align to the right side via auto margin */
   align-self: center;
   margin-left: auto;
-  padding: 100px 12px ;
+  padding: 10% 3%;
   width: fit-content;
 }
 
@@ -35,8 +31,8 @@
   height: var(--rotation-box-input-height);
   color: #222;
   padding: var(--rotation-box-input-padding);
-  border: 1.5px solid #2ecc40;
-  border-radius: 6px;
+  border: 100% solid #2ecc40;
+  border-radius: 8%;
   font-size: var(--rotation-box-input-font-size);
   outline: none;
   background: #eaffea;

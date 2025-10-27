@@ -5,13 +5,9 @@ export const PARTS = ALL_PARTS;
 
 const PartsDegreeContext = createContext(null);
 
-// Action types
 const SET_DEGREE = 'SET_DEGREE';
 const SET_REFERENCE_PART = 'SET_REFERENCE_PART';
 
-/**
- * Reducer for managing parts degrees state
- */
 function partsDegreeReducer(state, action) {
   switch (action.type) {
     case SET_DEGREE:

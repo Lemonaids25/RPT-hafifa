@@ -2,7 +2,7 @@ import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import '../inputs/RotationBox.css';
 
-export default function NumberSetReset({ onSet, onPreview, onPreviewClear, placeholder = 'Value', min, max, step = 1, validate }) {
+export default function NumberSetReset({ onSet, onPreview, onPreviewClear, placeholder = 'Value', currentValue, min, max, step = 1, validate }) {
   const [inputValue, setInputValue] = useState('');
 
   const parse = useCallback((raw) => {
@@ -19,16 +19,26 @@ export default function NumberSetReset({ onSet, onPreview, onPreviewClear, place
 
   const handleSet = useCallback(() => {
     const v = parse(inputValue);
-    onSet(v ?? 0);
+    if (v !== null) {
+      onSet(v);
+    } else if (typeof currentValue === 'number') {
+      onSet(currentValue);
+    } else {
+      onSet(0);
+    }
     setInputValue('');
     if (onPreviewClear) onPreviewClear();
-  }, [inputValue, onSet, parse, onPreviewClear]);
+  }, [inputValue, onSet, parse, onPreviewClear, currentValue]);
 
   const handleChange = useCallback((e) => {
     const val = e.target.value;
     setInputValue(val);
     if (onPreview) onPreview(parse(val));
   }, [parse, onPreview]);
+
+  const displayPlaceholder = typeof currentValue === 'number' 
+    ? `${placeholder} (${currentValue}°)` 
+    : placeholder;
 
   return (
     <div className="rotation-box">
@@ -38,7 +48,7 @@ export default function NumberSetReset({ onSet, onPreview, onPreviewClear, place
         onChange={handleChange}
         className="rotation-box-input"
         inputMode="numeric"
-        placeholder={placeholder}
+        placeholder={displayPlaceholder}
         step={step}
       />
       <button className="rotation-box-button" onClick={handleSet}>Set</button>
@@ -46,13 +56,3 @@ export default function NumberSetReset({ onSet, onPreview, onPreviewClear, place
   );
 }
 
-NumberSetReset.propTypes = {
-  onSet: PropTypes.func.isRequired,
-  onPreview: PropTypes.func,
-  onPreviewClear: PropTypes.func,
-  placeholder: PropTypes.string,
-  min: PropTypes.number,
-  max: PropTypes.number,
-  step: PropTypes.number,
-  validate: PropTypes.func
-};

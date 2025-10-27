@@ -1,41 +1,37 @@
-/* Uses global --pr-* variables defined in :root (index.css) */
-:root {
-	/* Pitch/Roll panel theme */
-	--pr-panel-bg: #181818;
-	--pr-panel-border: #333;
-	--pr-radius: 10px;
-	--pr-gap: 12px;
-	--pr-pad-x: 16px;
-	--pr-pad-y: 10px;
-	--pr-shadow: 0 2px 8px rgba(0,0,0,0.35);
-	--pr-toggle-size: 28px;
-	--pr-transition-fast: 300ms;
-	--pr-transition-slow: 600ms;
-	--pr-gauge-size: clamp(100px, 12vw, 160px);
-	--pr-gauge-img: clamp(72px, 8.5vw, 120px);
-	--pr-green: #2ecc71;
-	--pr-orange: #f39c12;
-	--pr-red: #e74c3c;
-	--pr-critical: #ff5a4f;
-}
 .pitch-roll-panel {
+  --pr-panel-bg: #181818;
+  --pr-panel-border: #333;
+  --pr-radius: 10px;
+  --pr-gap: 12px;
+  --pr-pad-x: 16px;
+  --pr-pad-y: 10px;
+  --pr-shadow: 0 2px 8px rgba(0,0,0,0.35);
+  --pr-toggle-size: 28px;
+  --pr-transition-fast: 300ms;
+  --pr-transition-slow: 600ms;
+  --pr-gauge-size: clamp(100px, 12vw, 160px);
+  --pr-gauge-img: clamp(72px, 8.5vw, 120px);
+  --pr-green: #2ecc71;
+  --pr-orange: #f39c12;
+  --pr-red: #e74c3c;
+  --pr-critical: #ff5a4f;
+  
   display: flex;
-  flex-direction: row; /* content then toggle on right */
-  align-items: center; /* vertically center both content and toggle */
+  flex-direction: row;
+  align-items: center;
   justify-content: flex-end;
   gap: var(--pr-gap);
   padding: var(--pr-pad-y) var(--pr-pad-x);
   flex: 1 1 auto;
-  background-color: var(--pr-panel-bg); /* distinct from page */
+  background-color: var(--pr-panel-bg);
   border: 1px solid var(--pr-panel-border);
   border-radius: var(--pr-radius);
   box-shadow: var(--pr-shadow);
 }
 
-/* Y-axis centering wrapper: fills parent height and centers child vertically only */
 .pr-vert-center {
   display: flex;
-  align-items: center; /* vertical center in a column layout requires flex-direction: column on parent; but here parent likely row, so use min-height */
+  align-items: center;
   min-height: 100vh;
 }
 
@@ -73,7 +69,7 @@
 .pitch-roll-panel .pr-content {
   gap: var(--pr-gap);
   overflow: hidden;
-  max-height: 1000px; /* large enough for content */
+  max-height: 1000px;
   opacity: 1;
   transform-origin: top;
   transition: max-height var(--pr-transition-fast) ease, opacity var(--pr-transition-fast) ease, transform var(--pr-transition-fast) ease;
@@ -90,25 +86,34 @@
   overflow: hidden;
 }
 
-/* Expanded state uses the default .pr-content styles, so no overrides needed */
-
-/* When collapsed, flip row so the toggle sits on the left */
 .pitch-roll-panel.collapsed {
   flex-direction: row-reverse;
   gap: 0;
-  padding: 6px 8px; /* shrink background to hug the arrow */
+  padding: 6px 8px;
   width: fit-content;
   flex: 0 0 auto;
 }
 
-/* When expanded, make the panel fill the entire screen height */
 .pitch-roll-panel.expanded {
   box-sizing: border-box;
   height: 100vh;  
 }
 
-/* Allow content to expand up to full viewport height for a smoother open animation */
 .pitch-roll-panel.expanded .pr-content {
   max-height: 100vh;
   max-height: 100dvh;
+}
+
+.pitch-roll-panel .rotation-box-input {
+  width: 90%;
+  height: 2%;
+  padding: 2% 4%;
+  font-size: 1.1rem;
+  border-radius: 6%;
+}
+
+.pitch-roll-panel .rotation-box-button {
+  padding: 3% 5%;
+  font-size: 1rem;
+  border-radius: 30%;
 }

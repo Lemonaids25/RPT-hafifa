@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
 import './TankComponent.css';
 import { nextAngleShortest } from '../../utils/angles';
 
@@ -20,10 +19,3 @@ export default function TankComponent({ src, degree = 0, alt = "Tank Component",
     />
   );
 }
-
-TankComponent.propTypes = {
-  src: PropTypes.string.isRequired,
-  degree: PropTypes.number,
-  alt: PropTypes.string,
-  className: PropTypes.string
-};

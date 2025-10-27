@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 export default function CollapseToggle({
   collapsed,
@@ -17,11 +16,3 @@ export default function CollapseToggle({
     </button>
   );
 }
-
-CollapseToggle.propTypes = {
-  collapsed: PropTypes.bool.isRequired,
-  onClick: PropTypes.func.isRequired,
-  className: PropTypes.string,
-  expandSymbol: PropTypes.string,
-  collapseSymbol: PropTypes.string
-};
