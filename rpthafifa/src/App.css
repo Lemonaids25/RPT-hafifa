@@ -1,18 +1,16 @@
 .app-layout {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
-  align-items: stretch;
 }
 
-.app-left {
+.pitch-roll-container {
   display: flex;
 }
 
-.app-main {
+.main-tank-display-container {
   display: flex;
 }
 
-.app-right {
+.input-controls-container {
   display: flex;
 }

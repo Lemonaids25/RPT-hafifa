@@ -1,8 +1,8 @@
 import React, { useMemo, useCallback } from 'react';
 import DegreeDisplay from '../components/DegreeDisplay/DegreeDisplay';
 import { usePartDegree, useReferencePart } from '../contexts/PartsDegreeContext';
-import { ROTATION_PARTS } from '../config/parts';
-import { PART_IDS } from '../config/constants';
+import { ROTATION_PARTS } from '../utils/parts';
+import { PART_IDS } from '../utils/constants';
 
 export default function DegreeDisplaysContainer() {
   const { referencePart, setReferencePart } = useReferencePart();

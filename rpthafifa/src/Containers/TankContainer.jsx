@@ -2,8 +2,8 @@ import React from 'react';
 import TankComponent from '../components/TankComponents/TankComponent';
 import PreviewDegreeContainer from './PreviewDegreeContainer';
 import { useRelativeDegrees } from '../hooks/useRelativeDegrees';
-import { TANK_COMPONENTS } from '../config/parts';
-import { PART_IDS } from '../config/constants';
+import { TANK_COMPONENTS } from '../utils/parts';
+import { PART_IDS } from '../utils/constants';
 import compassPng from '../assets/360-degrees.png';
 import '../components/TankComponents/TankComponent.css';
 

@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { usePartDegree, useReferencePart } from '../contexts/PartsDegreeContext';
 import { toRelativeDegrees, compassDegreeRelative } from '../utils/angles';
-import { PART_IDS, ANGLE_CONSTANTS } from '../config/constants';
+import { PART_IDS, ANGLE_CONSTANTS } from '../utils/constants';
 
 /**
  * Custom hook to calculate absolute, relative, and compass degrees

@@ -1,6 +1,6 @@
 import React from 'react';
 import RotationRow from '../components/RotationRow/RotationRow';
-import { ROTATION_PARTS } from '../config/parts';
+import { ROTATION_PARTS } from '../utils/parts';
 
 export default function RotationBoxesContainer() {
   return (

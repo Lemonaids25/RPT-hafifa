@@ -1,6 +1,6 @@
 import pitchImage from '../../assets/tank-side-view.png';
 import rollImage from '../../assets/tank-back-view.png';
-import { PART_IDS } from '../../config/constants';
+import { PART_IDS } from '../../utils/constants';
 
 /**
  * Configuration for pitch and roll gauges

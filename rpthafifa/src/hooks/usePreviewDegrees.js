@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import { useReferencePart, usePartDegree } from '../contexts/PartsDegreeContext';
 import { usePartPreview } from '../contexts/PreviewDegreeContext';
 import { normalize180 } from '../utils/angles';
-import { TANK_COMPONENTS } from '../config/parts';
+import { TANK_COMPONENTS } from '../utils/parts';
 
 /**
  * Custom hook to calculate preview degrees for all tank components
@@ -12,25 +12,21 @@ export function usePreviewDegrees() {
   const { referencePart } = useReferencePart();
 
   // Get all part degrees and previews (hooks must be called at top level)
-  const hull = {
-    degree: usePartDegree(TANK_COMPONENTS[0].id).degree ?? 0,
-    preview: usePartPreview(TANK_COMPONENTS[0].id).preview
-  };
-  const turret = {
-    degree: usePartDegree(TANK_COMPONENTS[1].id).degree ?? 0,
-    preview: usePartPreview(TANK_COMPONENTS[1].id).preview
-  };
-  const sight = {
-    degree: usePartDegree(TANK_COMPONENTS[2].id).degree ?? 0,
-    preview: usePartPreview(TANK_COMPONENTS[2].id).preview
-  };
+  const hullDegree = usePartDegree(TANK_COMPONENTS[0].id).degree ?? 0;
+  const hullPreview = usePartPreview(TANK_COMPONENTS[0].id).preview;
+  
+  const turretDegree = usePartDegree(TANK_COMPONENTS[1].id).degree ?? 0;
+  const turretPreview = usePartPreview(TANK_COMPONENTS[1].id).preview;
+  
+  const sightDegree = usePartDegree(TANK_COMPONENTS[2].id).degree ?? 0;
+  const sightPreview = usePartPreview(TANK_COMPONENTS[2].id).preview;
 
   // Map parts to their data
   const partsData = useMemo(() => ({
-    [TANK_COMPONENTS[0].id]: hull,
-    [TANK_COMPONENTS[1].id]: turret,
-    [TANK_COMPONENTS[2].id]: sight
-  }), [hull, turret, sight]);
+    [TANK_COMPONENTS[0].id]: { degree: hullDegree, preview: hullPreview },
+    [TANK_COMPONENTS[1].id]: { degree: turretDegree, preview: turretPreview },
+    [TANK_COMPONENTS[2].id]: { degree: sightDegree, preview: sightPreview }
+  }), [hullDegree, hullPreview, turretDegree, turretPreview, sightDegree, sightPreview]);
 
   // Get reference part's absolute angle
   const referenceAngle = useMemo(() => {

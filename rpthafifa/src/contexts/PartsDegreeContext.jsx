@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useMemo, useReducer, useCallback } from 'react';
-import { ALL_PARTS, INITIAL_DEGREES } from '../config/constants';
+import { ALL_PARTS, INITIAL_DEGREES } from '../utils/constants';
 
 export const PARTS = ALL_PARTS;
 

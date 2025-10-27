@@ -2,7 +2,7 @@
  * Utility functions for angle calculations and normalization
  */
 
-import { ANGLE_CONSTANTS } from '../config/constants';
+import { ANGLE_CONSTANTS } from './constants';
 
 /**
  * Normalize angle to range [0, 360)
