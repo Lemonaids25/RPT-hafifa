@@ -1,32 +1,29 @@
 
 .tank-stack {
+  --tank-component-top: 5%;
+  --tank-component-width: 100%;
+  --tank-transition: 0.3s;
+  
+  position: relative;
   display: flex;
   justify-content: center;
   width: 100%;
   height: 100%;
-  z-index: 0;
 }
 
 .tank-hull-style,
 .tank-turret-style,
 .commander-sight-style,
 .compass-style {
-  --tank-component-top: clamp(100px, 10vh, 120px);
-  --tank-component-width:   clamp(230px, 60vw, 500px);
-  --tank-transition: 0.3s;
   position: absolute;
   top: var(--tank-component-top);
+  
   width: var(--tank-component-width);
   height: auto;
-  transition: var(--tank-transition);
+  
   transform: translateX(-50%);
-  z-index: 0;
-}
-
-.tank-hull-style,
-.tank-turret-style,
-.commander-sight-style,
-.compass-style {
+  transition: var(--tank-transition);
+  
   pointer-events: none;
   user-select: none;
 }

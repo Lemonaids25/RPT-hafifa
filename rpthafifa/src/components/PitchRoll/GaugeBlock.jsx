@@ -1,10 +1,10 @@
 import React from 'react';
-import PitchRollGauge from './PitchRollGauge';
+import PitchRollGauge from './Gauge/PitchRollGauge';
 import NumberSetReset from '../inputs/NumberSetReset';
 import DegreeDisplay from '../DegreeDisplay/DegreeDisplay';
 import { STATUS } from '../../utils/constants';
 
-export default function GaugeBlock({ label, alt, src, degree, status, onSet, onReset }) {
+ export default function GaugeBlock({ label, alt, src, degree, status, onSet, onReset }) {
   return (
     <div className="gauge-block">
       <DegreeDisplay label={''} value={degree} className={`gauge-degree ${status}`} />

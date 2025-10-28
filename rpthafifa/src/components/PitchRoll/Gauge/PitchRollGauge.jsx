@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './PitchRollGauge.css';
-import { nextAngleShortest } from '../../utils/angles';
+import { nextAngleShortest } from '../../../utils/angles';
 
 export default function PitchRollGauge({ src, degree = 0, alt = "Gauge", className = "" }) {
   const [renderAngle, setRenderAngle] = useState(0);

@@ -7,8 +7,8 @@ import { PART_IDS } from '../../utils/constants';
 import CollapseToggle from '../../components/CollapseToggle/CollapseToggle';
 import './PitchRollPanel.css';
 
-export default function PitchRollContainer() {
-  const [isCollapsed, setIsCollapsed] = useState(false);
+export default function PitchRollContainer() {  
+  const [isCollapsed, setIsCollapsed] = useState(true);
   const pitch = usePartDegree(PART_IDS.PITCH);
   const roll = usePartDegree(PART_IDS.ROLL);
   const toggle = useCallback(() => setIsCollapsed((v) => !v), []);
@@ -22,7 +22,7 @@ export default function PitchRollContainer() {
   }, [pitch, roll]);
   return (
     <div className="pr-vert-center">
-      <div className={`pitch-roll-panel ${isCollapsed ? 'isCollapsed' : 'expanded'}`}>
+      <div className={`pitch-roll-panel ${isCollapsed ? 'collapsed' : 'expanded'}`}>
         <div className="pr-content">
           {items.map((item) => (
             <GaugeBlock key={item.id} {...item} />

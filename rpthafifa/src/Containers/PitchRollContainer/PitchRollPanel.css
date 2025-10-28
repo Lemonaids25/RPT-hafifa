@@ -21,11 +21,13 @@
   align-items: center;
   justify-content: flex-end;
   gap: var(--pr-gap);
-  padding: var(--pr-pad-y) var(--pr-pad-x);
   flex: 1 1 auto;
-  background-color: var(--pr-panel-bg);
+  
+  padding: var(--pr-pad-y) var(--pr-pad-x);
   border: 1px solid var(--pr-panel-border);
   border-radius: var(--pr-radius);
+  
+  background-color: var(--pr-panel-bg);
   box-shadow: var(--pr-shadow);
 }
 
@@ -39,14 +41,19 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  
   width: var(--pr-toggle-size);
   height: var(--pr-toggle-size);
-  border-radius: 50%;
   border: 1px solid #444;
-  background: #1e1e1e;
+  border-radius: 50%;
+  
   color: #ddd;
+  background: #1e1e1e;
+  
   cursor: pointer;
-  transition: transform var(--pr-transition-slow) ease, background-color 200ms ease, color 200ms ease;
+  transition: transform var(--pr-transition-slow) ease, 
+              background-color 200ms ease, 
+              color 200ms ease;
 }   
 
 .pitch-roll-panel .collapse-toggle:hover {
@@ -68,35 +75,41 @@
 
 .pitch-roll-panel .pr-content {
   gap: var(--pr-gap);
-  overflow: hidden;
   max-height: 1000px;
+  overflow: hidden;
+  
   opacity: 1;
   transform-origin: top;
-  transition: max-height var(--pr-transition-fast) ease, opacity var(--pr-transition-fast) ease, transform var(--pr-transition-fast) ease;
+  
+  transition: max-height var(--pr-transition-fast) ease, 
+              opacity var(--pr-transition-fast) ease, 
+              transform var(--pr-transition-fast) ease;
   will-change: max-height, opacity, transform;
 }
 
 .pitch-roll-panel.collapsed .pr-content {
+  width: 0;
+  max-width: 0;
   max-height: 0;
+  overflow: hidden;
+  
   opacity: 0;
   transform: translateY(-4px);
   pointer-events: none;
-  width: 0;
-  max-width: 0;
-  overflow: hidden;
 }
 
 .pitch-roll-panel.collapsed {
   flex-direction: row-reverse;
   gap: 0;
-  padding: 6px 8px;
-  width: fit-content;
   flex: 0 0 auto;
+  
+  width: fit-content;
+  padding: 6px 8px;
 }
 
 .pitch-roll-panel.expanded {
+  height: 100vh;
   box-sizing: border-box;
-  height: 100vh;  
 }
 
 .pitch-roll-panel.expanded .pr-content {
@@ -108,12 +121,12 @@
   width: 90%;
   height: 2%;
   padding: 2% 4%;
-  font-size: 1.1rem;
   border-radius: 6%;
+  font-size: 1.1rem;
 }
 
 .pitch-roll-panel .rotation-box-button {
   padding: 3% 5%;
-  font-size: 1rem;
   border-radius: 30%;
+  font-size: 1rem;
 }

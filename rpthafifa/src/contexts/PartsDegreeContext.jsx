@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useMemo, useReducer, useCallback } from 'react';
 import { ALL_PARTS, INITIAL_DEGREES } from '../utils/constants';
+import { normalize360 } from '../utils/angles';
 
 export const PARTS = ALL_PARTS;
 
@@ -15,7 +16,7 @@ function partsDegreeReducer(state, action) {
         ...state,
         degrees: {
           ...state.degrees,
-          [action.payload.part]: action.payload.value
+          [action.payload.part]: normalize360(action.payload.value)
         }
       };
     case SET_REFERENCE_PART:

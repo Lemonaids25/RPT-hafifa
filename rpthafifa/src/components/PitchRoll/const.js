@@ -1,7 +1,9 @@
 import { STATUS } from '../../utils/constants';
+import { normalize180 } from '../../utils/angles';
 
 export function getStatus(degree, thresholds) {
-  const absDegree = Math.abs(degree);
+  const normalizedDegree = normalize180(degree);
+  const absDegree = Math.abs(normalizedDegree);
   if (absDegree <= thresholds.green) return STATUS.GREEN;
   if (absDegree <= thresholds.orange) return STATUS.ORANGE;
   return STATUS.RED;
