@@ -1,21 +1,30 @@
 .app-layout {
   display: flex;
   justify-content: space-between;
+  height: 100vh;
 }
+
 .container{
   display: flex;
+  height: 100%;
 }
+
 .pitch-roll-container {
   display: flex;
+  height: 100%;
 }
+
 .main-tank-display-container {
   display: flex;
   justify-content: center;
   flex-direction: row;
   flex-wrap: wrap;
+  height: 100%;
 }
+
 .input-controls-container {
   display: flex;
+  height: 100%;
 }
 
 /* I would set all containers to flex as a generic item */

@@ -1,7 +1,7 @@
 .degree-display-container {
-  --degree-display-width: clamp(230px, 60vw, 500px);
+  --degree-display-width: clamp(14.375rem, 60vw, 31.25rem);
   --text-size: 1rem;
-  --degree-box-width-height: 5px 15px;
+  --degree-box-width-height: 0.3125rem 0.9375rem;
   
   position: relative;
   z-index: var(--z-index-dropdown);
@@ -47,7 +47,7 @@
   border: 2px solid #444;
   border-radius: var(--border-radius-xl);
   
-  font-size: 1.2rem;
+  font-size: clamp(0.875rem, 1.5vw, 1.2rem);
   font-weight: 600;
   text-align: center;
   color: var(--color-text-primary);

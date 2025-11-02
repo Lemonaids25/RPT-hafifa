@@ -6,7 +6,7 @@
   --rotation-box-button-height: 100%;
   --rotation-box-button-padding: 5% 5%;
   --rotation-box-gap: 2%;
-  --rotation-boxes-container-gap: 12px;
+  --rotation-boxes-container-gap: 0.75rem;
   
   display: flex;
   flex-direction: column;
@@ -50,7 +50,7 @@
   height: var(--rotation-box-button-height);
   padding: var(--rotation-box-button-padding);
   border: none;
-  border-radius: 15px;
+  border-radius: 0.9375rem;
   
   font-weight: 600;
   color: #fff;

@@ -1,16 +1,16 @@
 .pitch-roll-panel {
   --pr-panel-bg: #181818;
   --pr-panel-border: #333;
-  --pr-radius: 10px;
-  --pr-gap: 12px;
-  --pr-pad-x: 16px;
-  --pr-pad-y: 10px;
+  --pr-radius: 0.625rem;
+  --pr-gap: 0.75rem;
+  --pr-pad-x: 1rem;
+  --pr-pad-y: 0.625rem;
   --pr-shadow: 0 2px 8px rgba(0,0,0,0.35);
-  --pr-toggle-size: 28px;
+  --pr-toggle-size: 1.75rem;
   --pr-transition-fast: 300ms;
   --pr-transition-slow: 600ms;
-  --pr-gauge-size: clamp(100px, 12vw, 160px);
-  --pr-gauge-img: clamp(72px, 8.5vw, 120px);
+  --pr-gauge-size: clamp(6.25rem, 12vw, 10rem);
+  --pr-gauge-img: clamp(4.5rem, 8.5vw, 7.5rem);
   --pr-green: #2ecc71;
   --pr-orange: #f39c12;
   --pr-red: #e74c3c;
@@ -75,7 +75,7 @@
 
 .pitch-roll-panel .pr-content {
   gap: var(--pr-gap);
-  max-height: 1000px;
+  max-height: 62.5rem;
   overflow: hidden;
   
   opacity: 1;
@@ -104,7 +104,7 @@
   flex: 0 0 auto;
   
   width: fit-content;
-  padding: 6px 8px;
+  padding: 0.375rem 0.5rem;
 }
 
 .pitch-roll-panel.expanded {
