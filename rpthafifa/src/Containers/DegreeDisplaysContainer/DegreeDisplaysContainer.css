@@ -1,0 +1,19 @@
+.degree-displays-container {
+  --degree-display-width: clamp(14.375rem, 60vw, 31.25rem);
+  --degree-display-border-default: #444;
+  --degree-display-border-active: var(--color-success);
+  --degree-display-bg: #000;
+  --degree-display-text: var(--color-text-primary);
+  
+  position: relative;
+  z-index: var(--z-index-dropdown);
+  
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  
+  width: var(--degree-display-width);
+  max-width: 40%;
+  margin-inline: auto;
+  padding: var(--spacing-lg) var(--spacing-xs);
+}

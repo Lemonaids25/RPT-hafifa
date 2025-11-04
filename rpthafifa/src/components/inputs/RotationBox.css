@@ -1,25 +1,3 @@
-.rotation-boxes-container {
-  --rotation-box-input-width: 70%;
-  --rotation-box-input-height: 70%;
-  --rotation-box-input-padding: 4% 5%;
-  --rotation-box-input-font-size: 1rem;
-  --rotation-box-button-height: 100%;
-  --rotation-box-button-padding: 5% 5%;
-  --rotation-box-gap: 2%;
-  --rotation-boxes-container-gap: 0.75rem;
-  
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: var(--rotation-boxes-container-gap);
-  align-self: center;
-  
-  width: fit-content;
-  margin-left: auto;
-  padding: 10% 3%;
-}
-
 .rotation-box {
   display: flex;
   align-items: center;
@@ -28,39 +6,39 @@
 }
 
 .rotation-box-input {
-  width: var(--rotation-box-input-width);
-  height: var(--rotation-box-input-height);
-  padding: var(--rotation-box-input-padding);
-  border: 100% solid #2ecc40;
+  width: var(--rotation-box-input-width, 70%);
+  height: var(--rotation-box-input-height, 70%);
+  padding: var(--rotation-box-input-padding, 4% 5%);
+  border: 100% solid var(--rotation-box-input-border, #2ecc40);
   border-radius: 8%;
   
-  font-size: var(--rotation-box-input-font-size);
-  color: #222;
-  background: #eaffea;
+  font-size: var(--rotation-box-input-font-size, 1rem);
+  color: var(--rotation-box-input-text, #222);
+  background: var(--rotation-box-input-bg, #eaffea);
   
   outline: none;
   transition: border 0.2s;
 }
 
 .rotation-box-input:focus {
-  border-color: #ff851b;
+  border-color: var(--rotation-box-input-border-focus, #ff851b);
 }
 
 .rotation-box-button {
-  height: var(--rotation-box-button-height);
-  padding: var(--rotation-box-button-padding);
+  height: var(--rotation-box-button-height, 100%);
+  padding: var(--rotation-box-button-padding, 5% 5%);
   border: none;
   border-radius: 0.9375rem;
   
   font-weight: 600;
   color: #fff;
+  background: var(--rotation-box-set-color, #ff851b);
   
   cursor: pointer;
-  box-shadow: 0 2px 6px 0 #ff851b33;
-  transition: background 0.2s;
+  box-shadow: 0 2px 6px 0 rgba(255, 133, 27, 0.2);
+  transition: background 0.2s, box-shadow 0.2s;
 }
 
-.rotation-box-button:last-child {
-  background: #2ecc40;
-  box-shadow: 0 2px 6px 0 #2ecc4033;
+.rotation-box-button:hover {
+  box-shadow: 0 4px 8px 0 rgba(255, 133, 27, 0.3);
 }

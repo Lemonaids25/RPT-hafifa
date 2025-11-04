@@ -9,3 +9,8 @@ export {
   PreviewDegreeProvider,
   usePartPreview
 } from './PreviewDegreeContext';
+
+export {
+  APSProvider,
+  useAPS
+} from './APSContext';

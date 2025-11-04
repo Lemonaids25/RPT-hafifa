@@ -35,3 +35,9 @@ export const STATUS = {
   CRITICAL: 'CRITICAL'
 };
 
+export const APS_STATUS = {
+  SCAN: 'scan',
+  READY: 'ready',
+  OFF: 'off'
+};
+

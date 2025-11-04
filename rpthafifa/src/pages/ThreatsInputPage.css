@@ -1,0 +1,39 @@
+.threats-input-page {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: var(--color-bg-primary);
+}
+
+.threats-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.threats-input-page .aps-control-section {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+}
+
+.threats-placeholder {
+  text-align: center;
+  color: var(--color-text-primary);
+}
+
+.threats-placeholder p:first-child {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.placeholder-text {
+  font-size: 1rem;
+  color: #888;
+}

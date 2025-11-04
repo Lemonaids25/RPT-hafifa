@@ -1,0 +1,75 @@
+.aps-container {
+  --aps-child-min-width: 10rem;
+  --aps-button-color-home: #28a745;
+  --aps-button-color-threats: #ff5a4f;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  min-height: 14rem;
+  width: fit-content;
+}
+
+.aps-button-placeholder {
+  min-height: 3rem;
+  min-width: var(--aps-child-min-width);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.aps-always-button,
+.threat-input-button {
+  width: 100%;
+  padding: 0.75rem 1.5rem;
+  border: 2px solid;
+  border-radius: 0.5rem;
+  
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+}
+
+.aps-always-button {
+  border-color: var(--aps-button-color-home);
+  color: var(--aps-button-color-home);
+  background: rgba(40, 167, 69, 0.1);
+  box-shadow: 0 2px 8px rgba(40, 167, 69, 0.2);
+}
+
+.aps-always-button:hover {
+  background: rgba(40, 167, 69, 0.2);
+  box-shadow: 0 4px 12px rgba(40, 167, 69, 0.4);
+  transform: translateY(-2px);
+}
+
+.aps-always-button:active {
+  background: rgba(40, 167, 69, 0.3);
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(40, 167, 69, 0.3);
+}
+
+.threat-input-button {
+  border-color: var(--aps-button-color-threats);
+  color: var(--aps-button-color-threats);
+  background: rgba(255, 90, 79, 0.1);
+  box-shadow: 0 2px 8px rgba(255, 90, 79, 0.2);
+}
+
+.threat-input-button:hover {
+  background: rgba(255, 90, 79, 0.2);
+  box-shadow: 0 4px 12px rgba(255, 90, 79, 0.4);
+  transform: translateY(-2px);
+}
+
+.threat-input-button:active {
+  background: rgba(255, 90, 79, 0.3);
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(255, 90, 79, 0.3);
+}

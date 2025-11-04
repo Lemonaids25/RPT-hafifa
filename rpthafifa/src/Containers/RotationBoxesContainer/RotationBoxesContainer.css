@@ -1,0 +1,27 @@
+.rotation-boxes-container {
+  --rotation-box-input-width: 70%;
+  --rotation-box-input-height: 70%;
+  --rotation-box-input-padding: 4% 5%;
+  --rotation-box-input-font-size: 1rem;
+  --rotation-box-button-height: 100%;
+  --rotation-box-button-padding: 5% 5%;
+  --rotation-box-gap: 2%;
+  --rotation-boxes-container-gap: 0.75rem;
+  --rotation-box-set-color: #ff851b;
+  --rotation-box-reset-color: #2ecc40;
+  --rotation-box-input-bg: #eaffea;
+  --rotation-box-input-text: #222;
+  --rotation-box-input-border: #2ecc40;
+  --rotation-box-input-border-focus: #ff851b;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--rotation-boxes-container-gap);
+  align-self: center;
+  
+  width: fit-content;
+  margin-left: auto;
+  padding: 10% 3%;
+}

@@ -1,30 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import { PartsDegreeProvider } from './contexts/PartsDegreeContext.jsx';
 import { PreviewDegreeProvider } from './contexts/PreviewDegreeContext.jsx';
-import RotationBoxesContainer from './Containers/RotationBoxesContainer.jsx';
-import DegreeDisplaysContainer from './Containers/DegreeDisplaysContainer.jsx';
-import TankContainer from './Containers/TankContainer.jsx';
-import PitchRollContainer from './Containers/PitchRollContainer/PitchRollContainer.jsx';
+import { APSProvider } from './contexts/APSContext.jsx';
+import HomePage from './pages/HomePage.jsx';
+import ThreatsInputPage from './pages/ThreatsInputPage.jsx';
 import './index.css';
 import './App.css';
 
 function App() {
+  const [currentPage, setCurrentPage] = useState('home');
+
+  const navigateToThreats = () => {
+    setCurrentPage('threats');
+  };
+
+  const navigateToHome = () => {
+    setCurrentPage('home');
+  };
+
   return (
     <PartsDegreeProvider>
       <PreviewDegreeProvider>
-        <div className="app-layout">
-          <div className="pitch-roll-container">
-            <PitchRollContainer />
-          </div>
-          <div className="main-tank-display-container">
-            <DegreeDisplaysContainer />
-            <TankContainer />
-          </div>
-          <div className="input-controls-container">
-            <RotationBoxesContainer />
-          </div>
-        </div>
+        <APSProvider>
+          {currentPage === 'home' ? (
+            <HomePage onNavigateToThreats={navigateToThreats} />
+          ) : (
+            <ThreatsInputPage onNavigateHome={navigateToHome} />
+          )}
+        </APSProvider>
       </PreviewDegreeProvider>
     </PartsDegreeProvider>
   );
