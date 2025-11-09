@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { PartsDegreeProvider } from './contexts/PartsDegreeContext.jsx';
 import { PreviewDegreeProvider } from './contexts/PreviewDegreeContext.jsx';
 import { APSProvider } from './contexts/APSContext.jsx';
+import { ThreatsProvider } from './contexts/ThreatsContext.jsx';
 import HomePage from './pages/HomePage.jsx';
 import ThreatsInputPage from './pages/ThreatsInputPage.jsx';
 import './index.css';
@@ -23,11 +24,13 @@ function App() {
     <PartsDegreeProvider>
       <PreviewDegreeProvider>
         <APSProvider>
-          {currentPage === 'home' ? (
-            <HomePage onNavigateToThreats={navigateToThreats} />
-          ) : (
-            <ThreatsInputPage onNavigateHome={navigateToHome} />
-          )}
+          <ThreatsProvider>
+            {currentPage === 'home' ? (
+              <HomePage onNavigateToThreats={navigateToThreats} />
+            ) : (
+              <ThreatsInputPage onNavigateHome={navigateToHome} />
+            )}
+          </ThreatsProvider>
         </APSProvider>
       </PreviewDegreeProvider>
     </PartsDegreeProvider>

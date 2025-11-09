@@ -14,3 +14,8 @@ export {
   APSProvider,
   useAPS
 } from './APSContext';
+
+export {
+  ThreatsProvider,
+  useThreats
+} from './ThreatsContext';

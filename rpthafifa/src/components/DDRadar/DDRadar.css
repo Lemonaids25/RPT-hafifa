@@ -1,0 +1,213 @@
+.dd-radar-container {
+  --dd-primary-color: #ff9999;
+  --dd-secondary-color: #ffb366;
+  --dd-bg-color: rgba(255, 153, 153, 0.15);
+  --dd-border-color: #ff9966;
+  --dd-line-color: rgba(0, 0, 0, 0.4);
+  --dd-text-color: rgba(0, 0, 0, 0.6);
+  --dd-radar-size: 600px;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 2rem;
+}
+
+.dd-radar {
+  position: relative;
+  width: var(--dd-radar-size);
+  height: var(--dd-radar-size);
+  border-radius: 50%;
+  background: var(--dd-bg-color);
+  border: 3px solid var(--dd-border-color);
+  box-shadow: 0 4px 20px rgba(255, 153, 153, 0.3);
+}
+
+/* Concentric circles */
+.dd-circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 2px dashed var(--dd-primary-color);
+  opacity: 0.5;
+}
+
+.dd-circle-3000 {
+  width: 100%;
+  height: 100%;
+}
+
+.dd-circle-2000 {
+  width: 66.66%;
+  height: 66.66%;
+}
+
+.dd-circle-1000 {
+  width: 33.33%;
+  height: 33.33%;
+}
+
+.dd-range-label {
+  position: absolute;
+  top: 50%;
+  right: -3rem;
+  transform: translateY(-50%);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--dd-text-color);
+  background: rgba(255, 255, 255, 0.8);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+}
+
+/* Crosshair lines */
+.dd-crosshair {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.dd-line {
+  position: absolute;
+  background: var(--dd-line-color);
+}
+
+.dd-line-vertical {
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 100%;
+}
+
+.dd-line-horizontal {
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 100%;
+  height: 2px;
+}
+
+/* North indicator - rotates to stay at compass 0 */
+.dd-north-indicator {
+  position: absolute;
+  top: -1rem;
+  left: 50%;
+  transform-origin: 50% calc(var(--dd-radar-size) / 2 + 1rem);
+  transition: transform 0.3s ease;
+  z-index: 4;
+}
+
+.dd-north-icon {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ff5a4f;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Sight/Scope indicator */
+.dd-sight-indicator {
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  transform-origin: 50% calc(var(--dd-radar-size) / 2 - 1rem);
+  transition: transform 0.3s ease;
+  pointer-events: none;
+}
+
+.dd-sight-icon {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  font-size: 2rem;
+  color: rgba(0, 0, 0, 0.7);
+  text-shadow: 0 2px 4px rgba(255, 255, 255, 0.5);
+}
+
+/* Center tank icon */
+.dd-tank-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background: #6b7280;
+  border: 3px solid #374151;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  z-index: 10;
+}
+
+.dd-tank-icon {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.05em;
+  z-index: 11;
+}
+
+/* Turret arrow indicator */
+.dd-turret-arrow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-origin: 50% 50%;
+  transition: transform 0.3s ease;
+  width: 0;
+  height: 0;
+  z-index: 12;
+}
+
+.dd-turret-line {
+  position: absolute;
+  top: -2rem;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 3px;
+  height: 1.5rem;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.dd-turret-tip {
+  position: absolute;
+  top: -4rem;
+  left: 50%;
+  transform: translate(-50%, 0);
+  font-size: 1rem;
+  color: #fff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Responsive sizing */
+@media (max-width: 768px) {
+  .dd-radar-container {
+    --dd-radar-size: 400px;
+  }
+}
+
+@media (max-width: 480px) {
+  .dd-radar-container {
+    --dd-radar-size: 300px;
+  }
+  
+  .dd-range-label {
+    font-size: 0.75rem;
+    right: -2.5rem;
+  }
+}
