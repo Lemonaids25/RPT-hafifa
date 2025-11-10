@@ -1,5 +1,5 @@
 import React from 'react';
-import TankComponent from '../components/TankComponents/TankComponent';
+import TankComponent from '../components/MainPage/TankComponents/TankComponent';
 import { usePreviewDegrees } from '../hooks/usePreviewDegrees';
 import { TANK_COMPONENTS } from '../utils/parts';
 import '../components/Preview/PreviewTank.css';

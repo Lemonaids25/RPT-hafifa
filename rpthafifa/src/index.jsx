@@ -4,6 +4,7 @@ import { PartsDegreeProvider } from './contexts/PartsDegreeContext.jsx';
 import { PreviewDegreeProvider } from './contexts/PreviewDegreeContext.jsx';
 import { APSProvider } from './contexts/APSContext.jsx';
 import { ThreatsProvider } from './contexts/ThreatsContext.jsx';
+import { TargetingProvider } from './contexts/TargetingContext.jsx';
 import HomePage from './pages/HomePage.jsx';
 import ThreatsInputPage from './pages/ThreatsInputPage.jsx';
 import './index.css';
@@ -25,11 +26,13 @@ function App() {
       <PreviewDegreeProvider>
         <APSProvider>
           <ThreatsProvider>
-            {currentPage === 'home' ? (
-              <HomePage onNavigateToThreats={navigateToThreats} />
-            ) : (
-              <ThreatsInputPage onNavigateHome={navigateToHome} />
-            )}
+            <TargetingProvider>
+              {currentPage === 'home' ? (
+                <HomePage onNavigateToThreats={navigateToThreats} />
+              ) : (
+                <ThreatsInputPage onNavigateHome={navigateToHome} />
+              )}
+            </TargetingProvider>
           </ThreatsProvider>
         </APSProvider>
       </PreviewDegreeProvider>

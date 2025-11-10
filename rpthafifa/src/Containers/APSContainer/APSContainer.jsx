@@ -1,6 +1,6 @@
 import React from 'react';
 import APSLever from '../../components/APSLever/APSLever';
-import ThreatInputButton from '../../components/ThreatInputButton/ThreatInputButton';
+import ThreatInputButton from '../../components/ThreatsPage/ThreatInputButton/ThreatInputButton';
 import { getButtonText } from './const';
 import './APSContainer.css';
 

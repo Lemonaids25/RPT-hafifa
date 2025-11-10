@@ -1,5 +1,7 @@
 import React, { createContext, useContext, useState, useCallback } from 'react';
 
+const THREAT_MAX_DISTANCE = 3000;
+
 const ThreatsContext = createContext();
 
 export const useThreats = () => {
@@ -15,8 +17,8 @@ export const ThreatsProvider = ({ children }) => {
   const [nextId, setNextId] = useState(10);
 
   const addThreat = useCallback((degrees, distance) => {
-    // Validate distance (0-3000)
-    if (distance < 0 || distance > 3000) {
+    // Validate distance (0-THREAT_MAX_DISTANCE)
+    if (distance < 0 || distance > THREAT_MAX_DISTANCE) {
       return false; // Invalid threat, don't add or increment ID
     }
 

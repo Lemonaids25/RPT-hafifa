@@ -1,7 +1,7 @@
 import React from 'react';
 import PitchRollGauge from './Gauge/PitchRollGauge';
-import NumberSetReset from '../inputs/NumberSetReset';
-import DegreeDisplay from '../DegreeDisplay/DegreeDisplay';
+import NumberSetReset from '../MainPage/inputs/NumberSetReset';
+import DegreeDisplay from '../MainPage/DegreeDisplay/DegreeDisplay';
 import { STATUS } from '../../utils/constants';
 
  export default function GaugeBlock({ label, alt, src, degree, status, onSet, onReset }) {

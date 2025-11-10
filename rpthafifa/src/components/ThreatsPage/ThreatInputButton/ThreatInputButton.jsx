@@ -1,5 +1,5 @@
 import React from 'react';
-import { useAPS } from '../../contexts';
+import { useAPS } from '../../../contexts';
 
 const ThreatInputButton = ({ onNavigate, buttonText }) => {
   const { isScanning } = useAPS();

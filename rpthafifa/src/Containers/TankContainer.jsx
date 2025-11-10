@@ -1,11 +1,11 @@
 import React from 'react';
-import TankComponent from '../components/TankComponents/TankComponent';
+import TankComponent from '../components/MainPage/TankComponents/TankComponent';
 import PreviewDegreeContainer from './PreviewDegreeContainer';
 import { useRelativeDegrees } from '../hooks/useRelativeDegrees';
 import { TANK_COMPONENTS } from '../utils/parts';
 import { PART_IDS } from '../utils/constants';
 import compassPng from '../assets/360-degrees.png';
-import '../components/TankComponents/TankComponent.css';
+import '../components/MainPage/TankComponents/TankComponent.css';
 
 export default function TankContainer() {
   const { compassDegree, getDegree } = useRelativeDegrees();

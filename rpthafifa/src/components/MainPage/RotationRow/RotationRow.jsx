@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { usePartDegree } from '../../contexts/PartsDegreeContext';
-import { usePartPreview } from '../../contexts/PreviewDegreeContext';
+import { usePartDegree } from '../../../contexts/PartsDegreeContext';
+import { usePartPreview } from '../../../contexts/PreviewDegreeContext';
 import NumberSetReset from '../inputs/NumberSetReset';
 
 function RotationRow({ partId, label }) {

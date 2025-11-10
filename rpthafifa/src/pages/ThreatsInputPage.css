@@ -30,4 +30,14 @@
   justify-content: flex-start;
   padding: 2rem;
   height: 100%;
+  gap: 1rem;
+}
+
+.targeting-controls {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  max-width: 400px;
 }

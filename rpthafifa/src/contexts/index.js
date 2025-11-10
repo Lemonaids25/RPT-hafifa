@@ -19,3 +19,9 @@ export {
   ThreatsProvider,
   useThreats
 } from './ThreatsContext';
+
+export {
+  TargetingProvider,
+  useTargeting,
+  TARGETING_MODE
+} from './TargetingContext';

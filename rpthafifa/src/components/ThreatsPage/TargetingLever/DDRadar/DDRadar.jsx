@@ -1,6 +1,8 @@
 import React from 'react';
-import { usePartDegree } from '../../contexts/PartsDegreeContext';
-import { PART_IDS } from '../../utils/constants';
+import { usePartDegree } from '../../../../contexts/PartsDegreeContext';
+import { PART_IDS } from '../../../../utils/constants';
+import ThreatDots from '../../ThreatDots/ThreatDots';
+import { DD_RANGE_CIRCLES, calculateNorthRotation, calculateRelativeRotation } from './const';
 import './DDRadar.css';
 
 const DDRadar = () => {
@@ -8,27 +10,19 @@ const DDRadar = () => {
   const turret = usePartDegree(PART_IDS.TURRET);
   const sight = usePartDegree(PART_IDS.COMMANDER_SIGHT);
 
-  // DD is always centered on hull, so north rotates relative to hull
-  // North indicator should point at 0° (top) when hull is at 0°
-  const northRotation = -hull.degree;
-  
-  // Sight and turret rotate relative to hull
-  const sightRotation = sight.degree - hull.degree;
-  const turretRotation = turret.degree - hull.degree;
+  const northRotation = calculateNorthRotation(hull.degree);
+  const sightRotation = calculateRelativeRotation(sight.degree, hull.degree);
+  const turretRotation = calculateRelativeRotation(turret.degree, hull.degree);
 
   return (
     <div className="dd-radar-container">
       <div className="dd-radar">
         {/* Concentric circles for range indicators */}
-        <div className="dd-circle dd-circle-3000">
-          <span className="dd-range-label">3000m</span>
-        </div>
-        <div className="dd-circle dd-circle-2000">
-          <span className="dd-range-label">2000m</span>
-        </div>
-        <div className="dd-circle dd-circle-1000">
-          <span className="dd-range-label">1000m</span>
-        </div>
+        {DD_RANGE_CIRCLES.map(circle => (
+          <div key={circle.distance} className={`dd-circle ${circle.className}`}>
+            <span className="dd-range-label">{circle.label}</span>
+          </div>
+        ))}
 
         {/* Cross lines (North-South, East-West) */}
         <div className="dd-crosshair">
@@ -63,6 +57,9 @@ const DDRadar = () => {
           </div>
           <div className="dd-tank-icon">TANK</div>
         </div>
+
+        {/* Threat dots */}
+        <ThreatDots />
       </div>
     </div>
   );

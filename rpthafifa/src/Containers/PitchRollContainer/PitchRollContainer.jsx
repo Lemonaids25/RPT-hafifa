@@ -4,7 +4,7 @@ import GaugeBlock from '../../components/PitchRoll/GaugeBlock';
 import { buildItems } from '../../components/PitchRoll/const';
 import { GAUGES } from './const';
 import { PART_IDS } from '../../utils/constants';
-import CollapseToggle from '../../components/CollapseToggle/CollapseToggle';
+import CollapseToggle from '../../components/MainPage/CollapseToggle/CollapseToggle';
 import './PitchRollPanel.css';
 
 export default function PitchRollContainer() {  

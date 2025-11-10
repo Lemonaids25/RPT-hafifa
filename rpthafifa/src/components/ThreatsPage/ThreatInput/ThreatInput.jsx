@@ -1,5 +1,14 @@
 import React, { useState, useCallback } from 'react';
-import { useThreats } from '../../contexts';
+import { useThreats } from '../../../contexts';
+import {
+  THREAT_DISTANCE_MIN,
+  THREAT_DISTANCE_MAX,
+  INPUT_LABELS,
+  INPUT_PLACEHOLDERS,
+  BUTTON_TEXT,
+  UI_TEXT,
+  validateThreatInput
+} from './const';
 import './ThreatInput.css';
 
 const ThreatInput = () => {
@@ -11,29 +20,16 @@ const ThreatInput = () => {
   const handleAddThreat = useCallback(() => {
     setError('');
 
-    // Validate inputs
-    if (degrees === '' || distance === '') {
-      setError('Please enter both degrees and distance');
+    const validation = validateThreatInput(degrees, distance);
+    
+    if (!validation.valid) {
+      setError(validation.error);
       return;
     }
 
-    const degreesNum = parseFloat(degrees);
-    const distanceNum = parseFloat(distance);
-
-    if (isNaN(degreesNum) || isNaN(distanceNum)) {
-      setError('Please enter valid numbers');
-      return;
-    }
-
-    if (distanceNum < 0 || distanceNum > 3000) {
-      setError('Distance must be between 0 and 3000m');
-      return;
-    }
-
-    const success = addThreat(degreesNum, distanceNum);
+    const success = addThreat(validation.degreesNum, validation.distanceNum);
     
     if (success) {
-      // Clear inputs on success
       setDegrees('');
       setDistance('');
     }
@@ -47,33 +43,33 @@ const ThreatInput = () => {
 
   return (
     <div className="threat-input-container">
-      <h3 className="threat-input-title">Threat Inputs</h3>
+      <h3 className="threat-input-title">{UI_TEXT.TITLE}</h3>
       
       <div className="threat-input-fields">
         <div className="threat-field">
-          <label htmlFor="threat-degrees">Degrees (relative to hull)</label>
+          <label htmlFor="threat-degrees">{INPUT_LABELS.DEGREES}</label>
           <input
             id="threat-degrees"
             type="number"
             value={degrees}
             onChange={(e) => setDegrees(e.target.value)}
             onKeyDown={handleKeyDown}
-            placeholder="0-360"
+            placeholder={INPUT_PLACEHOLDERS.DEGREES}
             className="threat-input"
           />
         </div>
 
         <div className="threat-field">
-          <label htmlFor="threat-distance">Distance (meters)</label>
+          <label htmlFor="threat-distance">{INPUT_LABELS.DISTANCE}</label>
           <input
             id="threat-distance"
             type="number"
             value={distance}
             onChange={(e) => setDistance(e.target.value)}
             onKeyDown={handleKeyDown}
-            placeholder="0-3000"
-            min="0"
-            max="3000"
+            placeholder={INPUT_PLACEHOLDERS.DISTANCE}
+            min={THREAT_DISTANCE_MIN}
+            max={THREAT_DISTANCE_MAX}
             className="threat-input"
           />
         </div>
@@ -84,25 +80,25 @@ const ThreatInput = () => {
           onClick={handleAddThreat}
           className="threat-add-button"
         >
-          Add Threat
+          {BUTTON_TEXT.ADD}
         </button>
       </div>
 
       <div className="threat-list-section">
         <div className="threat-list-header">
-          <h4>Active Threats</h4>
+          <h4>{UI_TEXT.ACTIVE_THREATS}</h4>
           {threats.length > 0 && (
             <button 
               onClick={clearThreats}
               className="threat-clear-button"
             >
-              Clear All
+              {BUTTON_TEXT.CLEAR_ALL}
             </button>
           )}
         </div>
 
         {threats.length === 0 ? (
-          <div className="threat-list-empty">No threats detected</div>
+          <div className="threat-list-empty">{UI_TEXT.NO_THREATS}</div>
         ) : (
           <ul className="threat-list">
             {[...threats].reverse().map(threat => (

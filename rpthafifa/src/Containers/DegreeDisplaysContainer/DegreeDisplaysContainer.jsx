@@ -1,5 +1,5 @@
 import React, { useMemo, useCallback } from 'react';
-import DegreeDisplay from '../../components/DegreeDisplay/DegreeDisplay';
+import DegreeDisplay from '../../components/MainPage/DegreeDisplay/DegreeDisplay';
 import { usePartDegree, useReferencePart } from '../../contexts/PartsDegreeContext';
 import { ROTATION_PARTS } from '../../utils/parts';
 import { PART_IDS } from '../../utils/constants';
